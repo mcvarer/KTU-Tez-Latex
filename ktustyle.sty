@@ -1,0 +1,68 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%% TITLE SETTINGS %%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{titlesec}
+\newcommand*{\myonehalfvspace}{20.775861pt}% <-- Define a macro \myonehalfvspace
+\newcommand*{\mytwovspace}{27.701147pt}% <-- Define a macro \mytwovspace
+
+\usepackage[nodisplayskipstretch]{setspace}
+
+\setstretch{1.5}
+
+
+% Paragraph indent
+\setlength{\parindent}{1cm}
+
+%resimler icin
+\usepackage{graphicx}
+
+
+\usepackage{threeparttable} % tablo isimnini üste ve sol'a hizalı hazılması için
+
+\usepackage[titles]{tocloft} % chapter'ların da nokta ile gösterilmesi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%% VARIABLES %%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\KTU{KARADENİZ TEKNİK ÜNİVERSİTEİSİ}
+\def\ktu{Karadeniz Teknik Üniversitesi}
+\def\titleFac{FEN BİLİMLERİ ENSTİTÜSÜ}
+\def\anabilim{BİLGİSAYAR MÜHENDİSLİĞİ ANABILIM DALI}
+\def\titleTR{HİPERSPEKTRAL UYDU GÖRÜNTÜLERİNİN SINIFLANDIRILMASINDA\\ VAE VE CNN İLE HİBRİT BİR YAKLAŞIM}
+\def\seminer{YÜKSEK LİSANS SEMİNER ÇALIŞMASI RAPORU}
+\def\university{\KTU}
+\def\titleOfFaculty{\MakeUppercase\titleFac}
+\def\titleOfThesis{\titleTR}
+
+\def\studentName{Öğrencinin Adı Soyadı}
+\def\studentNameFill{Murat Can VARER}
+\def\studentNumber{Öğrenci No}
+\def\studentNumberFill{379438}
+\def\advisorT{Danışman}
+\def\advisorTFill{Dr. Öğr. Üyesi Murat AYKUT}
+\def\PresentationDate{Seminer Sunum Tarihi}
+\def\PresentationDateFill{21 /01 /2021}
+
+\def\content{İÇİNDEKİLER}
+
+\def\bibName{Kaynaklar}
+\def\symbolName{SEMBOLLER DİZİNİ}
+\def\abbreviationName{KISALTMALAR DİZİNİ}
+\def\listfigures{ŞEKİLLER DİZİNİ}
+\def\listtables{TABLOLAR DİZİNİ}
+
+\def\tableName{Tablo }
+\def\figureName{Şekil }
+
+\usepackage{enumitem}
+\newlist{abbrv}{itemize}{1}
+\setlist[abbrv,1]{label=,labelwidth=2.2cm,align=parleft,itemsep=0.1\baselineskip,leftmargin=!}
+\def\abbrevations{
+    \begin{abbrv}
+        \item[CAD]              Bilgisayar-Destekli tanı (Computer-Aided Diagnosis)
+        \item[FAST]              Hızlandırılmış Segment Testinden Öznitelikler (Features From Accelerated Segment Test)
+        \item[RANSAC]              Rastgele Örnek Onaylaşımı (Random Sample Consensus)
+    \end{abbrv}
+}

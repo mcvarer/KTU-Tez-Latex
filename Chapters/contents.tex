@@ -1,0 +1,133 @@
+\pagenumbering{Roman}
+\newcommand\CentChapters{
+  \titleformat{\chapter}[display]
+  {\normalfont\bfseries\normalsize\centering}{\thesection}{1em}{\MakeUppercase}
+}
+\CentChapters
+
+
+\makeatletter
+% \patchcmd{<cmd>}{<search>}{<replace>}{<succes>}{<failure>}
+\patchcmd{\@chapter}{\addtocontents{lof}{\protect\addvspace{10\p@}}}{}{}{} %figüre chapter aralıkları
+\patchcmd{\@chapter}{\addtocontents{lot}{\protect\addvspace{10\p@}}}{}{}{}% tablo chapter aralıkları
+
+
+
+
+%%%%Table of Contents%%%%
+
+\setstretch{1}
+\newcommand*{\disableboldchapterintoc}{%
+  \addtocontents{toc}{\string\renewcommand{\protect\cftchappagefont}{\protect\normalfont}}
+  \addtocontents{toc}{\string\renewcommand{\protect\cftchapfont}{\protect\normalfont}}
+  \addtocontents{toc}{\string\renewcommand{\protect\cftchapleader}{\protect\normalfont\protect\cftdotfill{\protect\cftsecdotsep}}}% 
+}
+
+
+\newcommand{\addchapscorerule}{\addtocontents{toc}{\protect\chapruletrue}}
+
+
+\renewcommand{\cftdotsep}{1}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftsecdotsep}}% dot leaders in bold
+\renewcommand{\contentsname}{\hfill\bfseries\large  \content \hfill}
+\addtocontents{toc}{\protect{}{\hspace*{\fill} \textbf{\underline{Sayfa No}}}} % Write the header line
+
+\addtocontents{toc}{\vskip0.5\baselineskip\par}% Some vertical spacing 
+
+% \addtocontents{toc}{\setcounter{tocdepth}{2}} en fazla derinlik 2 olması için
+
+
+\disableboldchapterintoc
+\renewcommand\cftchapaftersnum{.\hfill}
+\renewcommand{\cftsecaftersnum}{.\hfill}
+\renewcommand{\cftsubsecaftersnum}{.\hfill}
+
+% section ve subsectionları chapter ile aynı hizaya alır
+\cftsetindents{chapter}{0em}{4em}
+\cftsetindents{section}{0em} {4em}
+\cftsetindents{subsection}{0em}{4em}
+% chapterlardaki önceki boşluk
+\setlength{\cftbeforechapskip}{0.5em}
+
+\input{Chapters/onsoz}
+\input{Chapters/tezEtik}
+
+\setstretch{1}
+\tableofcontents
+
+
+\input{Chapters/ozet}
+\input{Chapters/abstract}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%    TABLO, ŞEKİL     %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setstretch{1.5}
+\newlength{\mylen }
+\newlength{\tempp }
+\setlength{\tempp}{\cftfignumwidth}
+
+\newpage
+
+\renewcommand{\figurename}{\figureName }
+\renewcommand{\cftfigpresnum}{\figurename }
+\renewcommand{\cftfigaftersnum}{}
+\settowidth{\mylen}{\cftfigpresnum\cftfigaftersnum}
+\addtolength{\cftfignumwidth}{\mylen}
+\addtocontents{lof}{\protect{}{\hspace*{\fill} \textbf{\underline{Sayfa No}}}} % Write the header line
+\addtocontents{lof}{\vskip0.5\baselineskip\par}% Some vertical spacing 
+\renewcommand{\listfigurename }{\listfigures }
+% \let\origaddvspace\addvspace
+% \renewcommand{\addvspace}[1]{}
+\listoffigures
+\newpage
+\renewcommand{\tablename}{\tableName }
+\renewcommand{\cfttabpresnum}{\tablename }
+\renewcommand{\cfttabaftersnum}{}
+\settowidth{\mylen}{\cfttabpresnum\cfttabaftersnum}
+\addtolength{\cfttabnumwidth}{\mylen}
+
+
+\renewcommand{\cftloftitlefont}{\hspace*{\fill}\Huge\bfseries}
+\renewcommand{\cftafterloftitle}{\hspace*{\fill}}
+\renewcommand{\listtablename}{\listtables}
+\addtocontents{lot}{\protect{}{\hspace*{\fill} \textbf{\underline{Sayfa No}}}} % Write the header line
+\addtocontents{lot}{\vskip1\baselineskip\par}% Some vertical spacing 
+
+\listoftables
+
+\input{Chapters/kısaltmalar}
+
+\clearpage
+
+
+\titleformat{\chapter}
+  {\normalfont\normalsize\bfseries}{\thechapter.}{1em}{}
+\titlespacing{\chapter}{1cm}{\myonehalfvspace plus 4pt minus 2pt}{\myonehalfvspace plus 2pt minus 2pt}
+% Section heading
+\titleformat{\section}
+  {\normalfont\normalsize\bfseries}{\thesection.}{.5em}{}
+\titlespacing{\section}{1cm}{\mytwovspace plus 4pt minus 2pt}{\myonehalfvspace plus 2pt minus 2pt}
+\titleformat{\subsection}
+  {\normalfont\normalsize\bfseries}{\thesubsection.}{.5em}{}
+\titlespacing{\subsection}{1cm}{\mytwovspace plus 4pt minus 2pt}{\myonehalfvspace plus 2pt minus 2pt}
+
+
+\fancypagestyle{plain}{%
+ \fancyhf{}
+  \fancyhead[C]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \setlength{\headheight}{52pt}% ...at least 51.60004pt
+}
+\pagestyle{plain}
+
+\pagenumbering{arabic}
+
+
+\setstretch{1.5}
+

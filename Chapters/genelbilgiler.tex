@@ -1,0 +1,80 @@
+\chapter{Genel Bilgiler}
+
+Hiperspektral Görüntüleme (HSG), yüzey materyallerinden yansıyan enerjinin, dar ve bitişik çok sayıda dalga boyu bandında
+ölçümüdür. Hiperspektral sensörler kullanılarak elde edilen veriler ilk iki boyut uzamsal üçüncü boyut spektral bilgiyi içeren hacimsel
+verilerdir. Ayrıca her bir piksel yüksek boyutlu vektörlerden oluşmaktadır. Elektromanyetik spektrum bandında hem görünür hem de
+kızılötesi bölgesinde birçok dalga boyunda görüntüler elde edebilen HSG, daha az sayıda görüntüler elde edebilen multispektral
+görüntülemeye göre daha anlamlı özellikler içermektedir. Bu özellikler farklı nesneleri tespit etmede yardımcı olabilmektedir. HSG
+kullanılarak nesnelerin tespiti ve sınıflandırılması gibi son zamanlardaki çalışmalar, bağlamsal özelliklerin büyük avantajlar
+sağlayabileceğini göstermiştir (Lee ve Kwon, 2016; Chu ve ark., 2018).\\
+
+Hiperspektral görüntülerin sınıflandırılmasında en yakın
+komşu, karar ağaçları, destek vektör makinesi (DVM) ve
+yapay sinir ağları (YSA) gibi farklı makine öğrenmesi
+temelli metotlar kullanılmaktadır. En yakın komşu metodu
+Öklid uzaklığı kullanan sınıflandırılma yöntemidir. \cite{blanzieri2008nearest}. DVM
+çekirdek metodu kullanarak yüksek boyutlu uzayda farklı
+hiperspektral sınıflar arasında sınıflandırma sınırı
+belirlenmektedir \cite{melgani2004classification}. DVM kadar yüksek sınıflandırma
+doğruluğu elde edememelerine rağmen, YSA kullanılarak
+yapılan hiperspektral görüntü sınıflandırma çalışmaları da
+bulunmaktadır \cite{ratle2010semisupervised}. Bu tür geleneksel spektral
+sınıflandırıcıların çoğu hiperspektral görüntülerdeki bazı
+bölgelerin tespit edilip ayırt edilmesinde halen yetersiz
+kalabilmektedir. Bunun temel nedeni sınırlı sayıda
+etiketlenmiş hiperspektral görüntü verisinin bulunmasıdır
+\cite{kang2014intrinsic}. \\
+Derin öğrenme metotlarından birisi olan Evrişimli Sinir Ağı (ESA) nesne algılama (Ren ve ark., 2015), görüntü sınıflandırma
+(Wang ve ark., 2016), derinlik tahmini (Liu ve ark., 2015), anlamsal bölümleme (Gidaris ve Komodakis, 2015), cilt kanseri
+sınıflandırması (Saba ve ark., 2019) gibi alanlarda yüksek başarımlara sahiptir. Bunun sebebi, ESA’nın çok fazla ön işleme olmadan
+ağda bulunan gizli katmanlar ile özellikleri çıkarabilmesidir. \\
+\newpage
+Hiperspektral görüntü sınıflandırmada karşılaşılan bir diğer zorluk ise farklı maddelerin benzer spektral değerlere sahip
+olması durumudur. Bu durumda sadece spektral bilgi ile
+sınıflandırma yapmak zordur. Bu problemi çözmek için
+uzaysal ve spektral bilgileri birlikte kullanan markov rastgele
+alanlar (MRA) yöntemi kullanılmıştır \cite{tarabalka2010svm} \\
+
+Yukarıda bahsedilen metotlar görüntü özelliklerini
+sınıflandırmadan bağımsız bir dizi işlem ile
+çıkartmaktadırlar. Ayrıca gerekli durumlarda uzman
+deneyiminden faydalanılmakta olup parametre ayarlaması
+gibi bazı işlemlere de ihtiyaç duyabilmektedirler. Derin
+öğrenme metotları daha dinamik ve yüksek seviyeli görüntü
+özellikleri sunarak hiperspektral görüntülerin
+sınıflandırılmasında yoğun bir şekilde kullanılmaktadırlar
+\cite{li2017hyperspectral}, \cite{yu2017convolutional}. Derin sinir ağları etkin ve adaptif öğrenme
+modelleridir. Çok katmanlı yığılmış oto-kodlayıcı, derin
+Boltzmann makineleri ve evrişimsel sinir ağları yaygın bir
+şekilde kullanılan derin sinir ağları arasında yer almaktadır.
+Evrişimsel sinir ağları (ESA) iki boyutlu sinir ağı olup hem
+uzaysal hem de spektral bilgiyi daha iyi
+yakalayabilmektedir. Chen vd. \cite{chen2014deep} TBA, oto-kodlayıcı ve
+lojistik regresyonu birlikte kullanarak hiperspektral görüntü
+sınıflandırması yapan bir yöntem geliştirmişlerdir. ESA
+kullanan bir diğer çalışmada ise beş katmanlı bir ESA
+mimarisi inşa edilerek hiperspektral görüntüleri optimum
+şekilde analiz edebilecek bir ağ tasarlanmıştır \cite{hu2015deep}. Zabalza
+vd. \cite{zabalza2016novel} yığılmış oto-kodlayıcı kullanarak hiperspektral
+görüntüyü farklı bölgelere bölütlemişlerdir. Derin öğrenme
+modellerinin sahip olduğu ağır parametre yükü\\ hafifletilerek
+geliştirilen bir ESA mimarisinde ise hiperspektral
+görüntülemedeki komşu piksellerin iç korelasyon
+bilgilerinden faydalanılmıştır \cite{li2016hyperspectral}. \\
+
+Gözetimsiz bir ağ modeli olan Varyasyonel Otokodlayıcı (Variational Autoencoder (VAE) ), klasik otokodlayıcı
+modelinde olduğu gibi kodlayıcı (E) ve kod çözücü (G)
+ağlarından oluşan bir ağ modelidir. Klasik otokodlayıcı
+modelinde karşılaşılan gradyan düşüşü ve aşırı öğrenme
+problemlerini çözmek üzere otokodlayıcıya bir varyasyon
+terimi eklenmesi ile elde edilmiştir \cite{kingma2013auto}.\\
+\newpage
+HSG verilerinin sınıflandırılmasında 2B-ESA kullanıldığında sadece uzamsal özellikler elde edilir. HSG verileri 3 boyutlu
+hacimsel veriler olduğu için hem uzamsal hem de spektral özelliklerin elde edilmesi gerekir (Roy ve ark., 2019). Bu özellikler 3
+boyutlu konvolüsyon katmanları kullanılarak sağlanabilir. Ayrıca hiperspektral veriler için komşu pikseller büyük önem taşımaktadır.
+Bu nedenlerden dolayı makalede hem uzamsal hem de spektral özelliklerin elde edilmesi için 3B-ESA kullanılmıştır. Ayrıca HSG
+sınıflandırılmasında yeni bir yöntem olan komşuluk çıkarımı yöntemi kullanılarak komşu pikselleride içerecek şekilde mini küpler
+oluşturulmuştur. Bu sayede daha çok örnek kullanılarak sınıflandırılma performansının artması sağlanmıştır. Sınıflandırma
+performansını değerlendirmek için Indian Pines (IP), Salinas scene (SA) gibi iki uzaktan algılama veriseti
+kullanılmıştır. Sınıflandırma işlemi sonucunda önderilen 3B-ESA-VAE modeli yüksek başarımlar elde etmiştir.
+% \section{genel2}
