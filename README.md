@@ -2,6 +2,8 @@
 Karadeniz Teknik Üniversitesi Yüksek Lisans ve Doktora yazım kurallarına göre oluşturulmuş Latex Şablonu
 
 
+[![Generic badge](https://img.shields.io/badge/Overleaf-1E96C0.svg)](https://shields.io/) ![CI status](https://github.com/overleaf/logo-exercise/workflows/CI/badge.svg)
+
 ## Dosya dizin yapısı
 
 
