@@ -5,6 +5,12 @@ Karadeniz Teknik Üniversitesi Yüksek Lisans ve Doktora yazım kurallarına gö
 * * *
 Sadece [overleaf](https://www.overleaf.com/) hesabından çalıştırın.
 * * *
+
+```
+NOT : Dosyanın resmiyeti  yoktur. Sadece bir şablondur.
+```
+
+
 ## Dosya dizin yapısı
 
 
