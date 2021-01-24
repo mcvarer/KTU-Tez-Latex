@@ -29,7 +29,7 @@ metin arasında 1,5 satır aralığı 1 boşluk bırakılmalı
 - [x] 1. Genel Bilgiler ile başlayan kısmı, sayfanın **orta üst** kısmında yer alacak şekilde Arap rakamları (1, 2, 3) ile numaralandırılmalı
 - [x] Genel bilgiler  sayfasına numara **konmamalı** bölümünün ikinci sayfasında **2** ile başlamalı
 - [x] Alt başlıklar arasında **2 satır** aralığı 1 boşluk bırakılmalı
-- [ ] Sabit değişkenler ayrı bir yere toplanacak
+- [x] Sabit değişkenler ayrı bir yere toplanacak
 - [ ] Okunurluk arttırılacak
 - [ ] Kodlara yorum satırı yazılacak
 - [ ] Dış kapaklar Enstüti Sayfasına göre tasarlanacak
