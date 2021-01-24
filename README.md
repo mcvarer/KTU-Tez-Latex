@@ -25,9 +25,9 @@ metin arasında 1,5 satır aralığı 1 boşluk bırakılmalı
 - [x] Tezin Ön sayfaları Romen rakamları ile
 (I,II,III,IV...) sayfanın alt orta olmalı
 - [x] İç kapaklara numara konmaz
-- [ ] Numaralama **Önsöz** sayfasının altına yazılan **(III)** sayısı ile başlar
+- [x] Numaralama **Önsöz** sayfasının altına yazılan **(III)** sayısı ile başlar
 - [x] 1. Genel Bilgiler ile başlayan kısmı, sayfanın **orta üst** kısmında yer alacak şekilde Arap rakamları (1, 2, 3) ile numaralandırılmalı
-- [ ] Genel bilgiler  sayfasına numara **konmamalı** bölümünün ikinci sayfasında **2** ile başlamalı
+- [x] Genel bilgiler  sayfasına numara **konmamalı** bölümünün ikinci sayfasında **2** ile başlamalı
 - [x] Alt başlıklar arasında **2 satır** aralığı 1 boşluk bırakılmalı
 
 
