@@ -1,35 +1,11 @@
 \documentclass[12pt, oneside]{book}
-\usepackage{newtxtext,newtxmath}
-\usepackage[utf8]{inputenc} % also latin5
-
-\usepackage[a4paper, top=3cm, left=3cm, bottom=2.5cm, right=2.5cm]{geometry}
-
-
 \usepackage{ktustyle}
 
-\usepackage[nottoc, numbib]{tocbibind}
-
-\usepackage[sorting=none]{biblatex} 
-\addbibresource{References.bib}
-
-\usepackage{fancyhdr}
-
-
-\usepackage{caption}
-
-\captionsetup{
-  font=footnotesize,
-  justification=raggedright,
-  singlelinecheck=false
-}
 
 \begin{document}
 
-
 \input{Chapters/diskapak}
 \input{Chapters/contents}
-
-
 
 %%%%% Chapters %%%%%%%%%%%%%
 \input{Chapters/giris}
@@ -43,6 +19,4 @@
 \setstretch{1}
 \printbibliography[heading=bibnumbered, title={\bibName}]
 %%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 \end{document}

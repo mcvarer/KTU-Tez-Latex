@@ -1,37 +1,52 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%% TITLE SETTINGS %%%%%%%%%%%%
+%%%%%%%%%%%%% PACKAGES IMPORT %%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\usepackage{newtxtext,newtxmath}
+\usepackage[utf8]{inputenc} % also latin5
+\usepackage[a4paper, top=3cm, left=3cm, bottom=2.5cm, right=2.5cm]{geometry}
+\usepackage{graphicx} %resimler icin
+\usepackage{threeparttable} % tablo isimnini üste ve sol'a hizalı hazılması için
+\usepackage[titles]{tocloft} % chapter'ların da nokta ile gösterilmesi
 \usepackage{titlesec}
 \newcommand*{\myonehalfvspace}{20.775861pt}% <-- Define a macro \myonehalfvspace
 \newcommand*{\mytwovspace}{27.701147pt}% <-- Define a macro \mytwovspace
-
 \usepackage[nodisplayskipstretch]{setspace}
 \usepackage[]{caption} % figure name below indent [bf] for bold.
-\setstretch{1.5}
+\usepackage{enumitem} % kısaltmalar için
+\usepackage[nottoc, numbib]{tocbibind}
+\usepackage[sorting=none]{biblatex} 
+\addbibresource{References.bib}
+\usepackage{fancyhdr}
+\usepackage{caption}
+\captionsetup{
+  font=footnotesize,
+  justification=raggedright,
+  singlelinecheck=false
+}
 
-
-% Paragraph indent
-\setlength{\parindent}{1cm}
-
-%resimler icin
-\usepackage{graphicx}
-
-
-\usepackage{threeparttable} % tablo isimnini üste ve sol'a hizalı hazılması için
-
-\usepackage[titles]{tocloft} % chapter'ların da nokta ile gösterilmesi
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%% VARIABLES %%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\seminer{YÜKSEK LİSANS SEMİNER ÇALIŞMASI RAPORU}
+
 \def\KTU{KARADENİZ TEKNİK ÜNİVERSİTEİSİ}
 \def\ktu{Karadeniz Teknik Üniversitesi}
+\def\ktuEN{Karadeniz Technical University}
+
 \def\titleFac{FEN BİLİMLERİ ENSTİTÜSÜ}
+\def\titleFacLow{Fen Bilimleri Enstitüsü}
+\def\titleFacEN{The Graduate School of Natural and Applied Sciences}
+
 \def\anabilim{BİLGİSAYAR MÜHENDİSLİĞİ ANABILIM DALI}
+\def\anabilimLow{Bilgisayar Mühendisliği Anabilim Dalı}
+\def\anabilimEN{Computer Engineering Graduate Program}
+
 \def\titleTR{HİPERSPEKTRAL UYDU GÖRÜNTÜLERİNİN SINIFLANDIRILMASINDA\\ VAE VE CNN İLE HİBRİT BİR YAKLAŞIM}
-\def\seminer{YÜKSEK LİSANS SEMİNER ÇALIŞMASI RAPORU}
+\def\titleEN{A HYBRID APPROACH TO THE CLASSIFICATION OF HYPERSPECTRALSATELLITE IMAGES VAE AND CNN}
+
+
 \def\university{\KTU}
 \def\titleOfFaculty{\MakeUppercase\titleFac}
 \def\titleOfThesis{\titleTR}
@@ -41,12 +56,21 @@
 \def\studentNumber{Öğrenci No}
 \def\studentNumberFill{379438}
 \def\advisorT{Danışman}
+\def\advisorEN{Supervisor}
 \def\advisorTFill{Dr. Öğr. Üyesi Murat AYKUT}
+\def\adviscorENFill{Asst. Prof. Murat AYKUT}
+
 \def\PresentationDate{Seminer Sunum Tarihi}
 \def\PresentationDateFill{21/ 01/ 2021}
 
+
+\def\ozetName{Yüksek Lisans Tezi}
+\def\ozetContentName{ÖZET}
+\def\abstractName{Master Thesis}
+\def\abstracContentName{SUMMARY}
 \def\content{İÇİNDEKİLER}
 
+\def\sayfaNo{Sayfa No}
 \def\bibName{Kaynaklar}
 \def\symbolName{SEMBOLLER DİZİNİ}
 \def\abbreviationName{KISALTMALAR DİZİNİ}
@@ -56,7 +80,9 @@
 \def\tableName{Tablo }
 \def\figureName{Şekil }
 
-\usepackage{enumitem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%% KISALTMALAR %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newlist{abbrv}{itemize}{1}
 \setlist[abbrv,1]{label=,labelwidth=2.2cm,align=parleft,itemsep=0.1\baselineskip,leftmargin=!}
 \def\abbrevations{
@@ -66,3 +92,9 @@
         \item[RANSAC]              Rastgele Örnek Onaylaşımı (Random Sample Consensus)
     \end{abbrv}
 }
+
+\setstretch{1.5}
+
+% Paragraph indent
+\setlength{\parindent}{1cm}
+

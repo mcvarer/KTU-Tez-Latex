@@ -12,9 +12,6 @@
 \patchcmd{\@chapter}{\addtocontents{lof}{\protect\addvspace{10\p@}}}{}{}{} %figüre chapter aralıkları
 \patchcmd{\@chapter}{\addtocontents{lot}{\protect\addvspace{10\p@}}}{}{}{}% tablo chapter aralıkları
 
-
-
-
 %%%%Table of Contents%%%%
 
 \setstretch{1}
@@ -31,7 +28,7 @@
 \renewcommand{\cftdotsep}{1}
 \renewcommand{\cftchapleader}{\cftdotfill{\cftsecdotsep}}% dot leaders in bold
 \renewcommand{\contentsname}{\hfill\bfseries\large  \content \hfill}
-\addtocontents{toc}{\protect{}{\hspace*{\fill} \textbf{\underline{Sayfa No}}}} % Write the header line
+\addtocontents{toc}{\protect{}{\hspace*{\fill} \textbf{\underline{\sayfaNo}}}} % Write the header line
 
 \addtocontents{toc}{\vskip0.5\baselineskip\par}% Some vertical spacing 
 
@@ -50,19 +47,14 @@
 % chapterlardaki önceki boşluk
 \setlength{\cftbeforechapskip}{0.5em}
 
-
 \input{Chapters/onsoz}
 \input{Chapters/tezEtik}
 
 \setstretch{1}
 \tableofcontents
 
-
 \input{Chapters/ozet}
 \input{Chapters/abstract}
-
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -81,7 +73,7 @@
 \renewcommand{\cftfigaftersnum}{}
 \settowidth{\mylen}{\cftfigpresnum\cftfigaftersnum}
 \addtolength{\cftfignumwidth}{\mylen}
-\addtocontents{lof}{\protect{}{\hspace*{\fill} \textbf{\underline{Sayfa No}}}} % Write the header line
+\addtocontents{lof}{\protect{}{\hspace*{\fill} \textbf{\underline{\sayfaNo}}}} % Write the header line
 \addtocontents{lof}{\vskip0.5\baselineskip\par}% Some vertical spacing 
 \renewcommand{\listfigurename }{\listfigures }
 % \let\origaddvspace\addvspace
@@ -98,7 +90,7 @@
 \renewcommand{\cftloftitlefont}{\hspace*{\fill}\Huge\bfseries}
 \renewcommand{\cftafterloftitle}{\hspace*{\fill}}
 \renewcommand{\listtablename}{\listtables}
-\addtocontents{lot}{\protect{}{\hspace*{\fill} \textbf{\underline{Sayfa No}}}} % Write the header line
+\addtocontents{lot}{\protect{}{\hspace*{\fill} \textbf{\underline{\sayfaNo}}}} % Write the header line
 \addtocontents{lot}{\vskip1\baselineskip\par}% Some vertical spacing 
 
 \listoftables
@@ -106,8 +98,6 @@
 \input{Chapters/kısaltmalar}
 
 \clearpage
-
-
 \titleformat{\chapter}
   {\normalfont\normalsize\bfseries}{\thechapter.}{1em}{}
 \titlespacing{\chapter}{1cm}{\myonehalfvspace plus 4pt minus 2pt}{\myonehalfvspace plus 2pt minus 2pt}
@@ -120,6 +110,7 @@
 \titlespacing{\subsection}{1cm}{\mytwovspace plus 4pt minus 2pt}{\myonehalfvspace plus 2pt minus 2pt}
 
 
+%%%% Sayfa numaralarının üstten ve ortada olması için
 \fancypagestyle{plain}{%
  \fancyhf{}
   \fancyhead[C]{\thepage}
@@ -129,7 +120,5 @@
 \pagestyle{plain}
 
 \pagenumbering{arabic}
-
-
 \setstretch{1.5}
 
