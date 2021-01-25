@@ -14,7 +14,9 @@
 \usepackage[]{caption} % figure name below indent [bf] for bold.
 \usepackage{enumitem} % kısaltmalar için
 \usepackage[nottoc, numbib]{tocbibind}
-\usepackage[sorting=none]{biblatex} 
+\usepackage[sorting=none, natbib=true,
+    style=numeric]{biblatex} 
+\DeclareFieldFormat{labelnumberwidth}{{#1\adddot}}
 \addbibresource{References.bib}
 \usepackage{fancyhdr}
 \usepackage{caption}
