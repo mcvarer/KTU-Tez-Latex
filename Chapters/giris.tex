@@ -2,10 +2,22 @@
 \thispagestyle{empty}
 
 Yüksek hesaplamaların daha hızlı yapıldığı günümüz teknolojisinde artık işlem yükü fazla olan projeler daha kolaylıkla yapılmaktadır. Evrişimli sinir ağları (ESA) (Convolution Neural Networks (CNN) ) görüntüler için sınıflandırma problemlerini çözmek amaçlı geliştirilmiş bir derin öğrenme modelidir. Uzaktan algılama, dünyanın yüzeyi hakkında bilgi edinme bilimidir. Günümüzde uzaktan algılama başta askeri hava sahası olmak üzere deprem hazılığı aşamasında toplanma bölgelerinin de belirlenmesinde önemli rol oynamaktadır. Derin öğrenme, öğrenme düzeylerini temsil eden makine öğrenmesinin dalını ifade eder yani burada bahsi geçen derin kelimesi, sınıflandırılacak görüntülerin özelliklerini sinir ağı yapısının derinliğinden alır. Varyasyonel Oto-Kodlayıcı (VOK) (Variational AutoEncoder (VAE) ), temelde yarı-danışmalı öğrenme olarak kullanılan bir yöntemdir. Amaç görüntülerin boyutu küçülterek daha farklı görüntülerin elde edilmesi için gizli katman adı verilen alanda Gaussian gürültüsü uygulayarak temelde çeşitliliği arttırmaktır. Bu tez çalışmasında uydudan çekilmiş Hiperspektral Görüntüleri (Hiperspectral Images (HSI) ) CNN modelini kullanarak sınıflandırılması yapılacaktır.
-\section{Alıntı}
-
-\subsection{Deneme}
-
+\section{Hiperspektral Nedir}
+Hiperspektral görüntüleme yöntemleri askeri uygulamar, kimyasal analizler, tarım alanı analizeleri gibi birçok alanda kullanılmaktadır. Görüntünün kaydedilmesi esnasında her piksel değerine objeden yansıyan ışığın dalga boyları kaydedilerek oluşturulan matris verileri ile hipersipektral görüntü elde edilmektedir. Hiperspektral görüntüleme ile görünür dalga boyu (400-700nm) haricinde kızıl ötesi gibi diğer dalga boylarına ait veriler de elde edilmektedir. Bu veriler yardımı ile spektral imzalar elde edilmektedir. Hiperspektral görüntüleme uygulamaları çoğunlukla görünür ışıkta aynı renge sahip birbirine karışmış birçok bileşenin ayırt edilmesinde kullanılmaktadır. Bu çalışamda genel kullanınım aksine, hiperspektral görüntüleme yöntemi nesnelerin spektral imzasının zamanla değişimini konu almaktadır. 
+\subsection{Hiperspektral ile Gabor}
+Son yıllarda hiperspektral görüntülerin sınıflandırılmasında
+da Gabor filtrelerinden faydalanılmıştır. Bu
+çalışmalarda Gabor filtrelerinin kullanım amacı genel olarak
+piksellerin uzaysal, spektral ve hibrid uzaysal-spektral
+karakteristiklerinin elde edilmesi olarak vurgulanmıştır.
+Gabor filtreleri içerdikleri farklı ölçek ve açılarda frekans
+bileşenleri ile yukarıda sayılan piksel bilgilerini
+sağlayabilmektedir. Gabor filtre bankası kısa dönemli
+Fourier dönüşümünün geliştirilmiş hali olduğu için
+incelenen görüntülerde Fourier dönüşümünün avantajlarını
+sunmaktadır. Hiperspektral görüntülerdeki bazı ayırt
+edilmesi zor piksel bölgelerinin tanınmasında bu bilgiler
+katkı sağlamıştır.
 \begin{table}[!ht]
 \centering
     \begin{threeparttable} % <--- new
@@ -18,36 +30,75 @@ Yüksek hesaplamaların daha hızlı yapıldığı günümüz teknolojisinde art
         \end{tabular}
     \end{threeparttable} % <--- new
 \end{table}
-Bu bölümde daha sonra güncelleme yapılacak
 
-\begin{table}[!ht]
-\centering
-\begin{threeparttable} % <--- new
-\caption{Word ile Latex'in çeşitli kriterlere göre değerlendirilmesi}
-\label{table:wordvslatex}
-\begin{tabular}{|c|c|c|}
-\hline
-\textbf{Özellik}                                                                               & \textbf{Word Puanı} & \textbf{Latex Puanı} \\ \hline
-Küçük doküman hazırlama hızı                                                                   & 3                   & 2                    \\ \hline
-\begin{tabular}[c]{@{}c@{}}Büyük doküman hazırlama ve \\ grafiklerle uğraşma hızı\end{tabular} & 1                   & 3                    \\ \hline
-Kullanma kolaylığı                                                                             & 3                   & 1                    \\ \hline
-Düzen ve çıktı kalitesi                                                                        & 2                   & 3                    \\ \hline
-Bilimsel özellikler                                                                            & 1                   & 3                    \\ \hline
-Ücret ve kullanılabilirlik (erişilebilirlik)                                                   & 1                   & 3                    \\ \hline
-Uyumluluk                                                                                      & 2                   & 2                    \\ \hline
-\textbf{Toplam}                                                                                & \textbf{13}         & \textbf{18}          \\ \hline
-\end{tabular}
-\end{threeparttable} % <--- new
-\end{table}
-\newpage
-\subsection{Alt Bölüm}
+\subsection{Matematik Formülleri}
+Metin içinde formül örneği $f(x) = x^2$ .
+\begin{equation}
+  1 + 2 = 3 
+\end{equation}
+
+\begin{align}
+  f(x) &= x^2
+\end{align}
+
+\begin{align}
+          \sin A \cos B &= \frac{1}{2}\left[ \sin(A-B)+\sin(A+B) \right] \\
+          \sin A \sin B &= \frac{1}{2}\left[ \sin(A-B)-\cos(A+B) \right] \\
+          \cos A \cos B &= \frac{1}{2}\left[ \cos(A-B)+\cos(A+B) \right] 
+\end{align}
+
+\begin{equation} 
+    \label{eq1}
+    \begin{split}
+        A & = \frac{\pi r^2}{2} \\
+         & = \frac{1}{2} \pi r^2
+    \end{split}
+\end{equation}
+
+\begin{align}
+\left[
+\begin{matrix}
+1 & 0\\
+0 & 1
+\end{matrix}
+\right]
+\end{align}
+
+\begin{align}
+x(t) \circledast h(t) &= y(t) \\
+X(f) H(f) &= Y(f) 
+\end{align}
+
+\subsection{Derin öğrenme ile Hiperspektral}
+Derin öğrenme algoritmaları arasında en sık kullanılanı
+Evrişimsel Sinir Ağlarıdır (ESA). ESA mimarisi birçok
+katmandan oluşan bir mimariye sahip olup klasik Yapay
+Sinir Ağlarının (YSA) bir türüdür. Bu katmanlar ele alınan
+probleme göre sayıları değişebilen evrişim (konvolüsyon)
+katmanları, havuzlama (pooling) katmanları, doğrultulmuş
+doğrusal ünite (ReLU) ve tam bağlı (fully-connected)
+katmanlardır. Mevcut ESA mimarileri herhangi bir
+düzenleme yapılmadan doğrudan hiperspektral görüntü
+sınıflandırma problemine uygulandıklarında başarı oranı
+istenen düzeylerde olmamaktadır. Özellikle benzer renk ve
+dokusal içerik bulunan sınıflar için evrişimsel özelliklere ek
+olarak daha farklı özelliklerin de elde edilmesi
+gerekmektedir.
 \begin{figure}[!h]
   \centering
   \begin{measuredfigure} % figure left side
-  \includegraphics[width=0.6\textwidth]{Figures/ktuLogo}
+  \includegraphics[width=0.3\textwidth]{Figures/ktuLogo}
   \caption{KTU Logo }
   \label{fig:wordvslatex}
   \end{measuredfigure}
 \end{figure}
 
-\subsubsection{\hspace{1cm}Alt Alt Bölüm}
+\subsubsection{ESA Mimari özet}
+ Ayrıca ESA mimarileri çok büyük ölçekte
+eğitim örneğine ihtiyaç duyarken, hiperspektral görüntü veri
+tabanlarının sınırlı sayıda örnek içermesi derin öğrenme
+mimarisinin eğitilmesinde yetersiz kalınmasına yol
+açmaktadır. Bu çalışmada bahsedilen zorlukların üstesinden
+gelebilecek bir mimariye sahip olmakla birlikte, özellik
+çıkarma ve öğrenme kapasitesi yüksek bir ESA mimarisi
+tasarlanmıştır. 

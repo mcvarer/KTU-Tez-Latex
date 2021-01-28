@@ -41,9 +41,10 @@
 \renewcommand{\cftsubsecaftersnum}{.\hfill}
 
 % section ve subsectionları chapter ile aynı hizaya alır
-\cftsetindents{chapter}{0em}{4em}
-\cftsetindents{section}{0em} {4em}
-\cftsetindents{subsection}{0em}{4em}
+\cftsetindents{chapter}{0em}{5em}
+\cftsetindents{section}{0em} {5em}
+\cftsetindents{subsection}{0em}{5em}
+\cftsetindents{subsubsection}{0em}{5em}
 % chapterlardaki önceki boşluk
 \setlength{\cftbeforechapskip}{0.1em}
 
@@ -108,7 +109,9 @@
 \titleformat{\subsection}
   {\normalfont\normalsize\bfseries}{\thesubsection.}{.5em}{}
 \titlespacing{\subsection}{1cm}{\mytwovspace plus 4pt minus 2pt}{\myonehalfvspace plus 2pt minus 2pt}
-
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries}{\thesubsubsection.}{.5em}{}
+\titlespacing{\subsubsection}{1cm}{\mytwovspace plus 4pt minus 2pt}{\myonehalfvspace plus 2pt minus 2pt}
 
 %%%% Sayfa numaralarının üstten ve ortada olması için
 \fancypagestyle{plain}{%
