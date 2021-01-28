@@ -30,6 +30,9 @@ metin arasında 1,5 satır aralığı 1 boşluk bırakılmalı
 - [x] Genel bilgiler  sayfasına numara **konmamalı** bölümünün ikinci sayfasında **2** ile başlamalı
 - [x] Alt başlıklar arasında **2 satır** aralığı 1 boşluk bırakılmalı
 - [x] Sabit değişkenler ayrı bir yere toplanacak
+- [x] Subsub section düzenlendi
+- [x] Matematik formülleri eklendi
+- [x] İçindekiler sayfası düzenlendi
 - [ ] Okunurluk arttırılacak
 - [ ] Kodlara yorum satırı yazılacak
 - [ ] Dış kapaklar Enstüti Sayfasına göre tasarlanacak
@@ -42,15 +45,6 @@ metin arasında 1,5 satır aralığı 1 boşluk bırakılmalı
 	- abstract.tex
 	- contents.tex
 	- diskapak.tex
-	- genelbilgiler.tex
-	- giris.tex
-	- kaynaklar.tex
-	- konuileilglilibasliklar.tex
-	- kısaltmalar.tex
-	- literatur.tex
-	- onsoz.tex
-	- ozet.tex
-	- sonuclar.tex
 	- tezEtik.tex
 2. Figures
 	-  IP_ground_.png
