@@ -34,11 +34,11 @@
 
 % \addtocontents{toc}{\setcounter{tocdepth}{2}} en fazla derinlik 2 olması için
 
-
 \disableboldchapterintoc
 \renewcommand\cftchapaftersnum{.\hfill}
 \renewcommand{\cftsecaftersnum}{.\hfill}
 \renewcommand{\cftsubsecaftersnum}{.\hfill}
+\renewcommand{\cftsubsubsecaftersnum}{.\hfill}
 
 % section ve subsectionları chapter ile aynı hizaya alır
 \cftsetindents{chapter}{0em}{5em}
@@ -46,13 +46,15 @@
 \cftsetindents{subsection}{0em}{5em}
 \cftsetindents{subsubsection}{0em}{5em}
 % chapterlardaki önceki boşluk
-\setlength{\cftbeforechapskip}{0.1em}
+\setlength{\cftbeforechapskip}{0.0em}
 
+% \CentChapters
 \input{Chapters/onsoz}
 \input{Chapters/tezEtik}
-
+\renewcommand{\baselinestretch}{1}\normalsize % content aralıklarının 1pt olması
 
 \tableofcontents
+
 \setstretch{1}
 \input{Chapters/ozet}
 \input{Chapters/abstract}
