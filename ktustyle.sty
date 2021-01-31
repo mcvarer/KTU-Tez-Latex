@@ -1,6 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%% PACKAGES IMPORT %%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[T1]{fontenc}
 \usepackage{newtxtext,newtxmath}
 \usepackage[utf8]{inputenc} % also latin5
 \usepackage[a4paper, top=3cm, left=3cm, bottom=2.5cm, right=2.5cm]{geometry}
@@ -14,10 +15,21 @@
 \usepackage[]{caption} % figure name below indent [bf] for bold.
 \usepackage{enumitem} % kısaltmalar için
 \usepackage[nottoc, numbib]{tocbibind}
-\usepackage[sorting=none, natbib=true,
-    style=numeric]{biblatex} 
-\DeclareFieldFormat{labelnumberwidth}{{#1\adddot}}
+\usepackage{flushend}
+%%%%%%%% REFERENCES SETTINGS %%%%%%%%%%
+\usepackage{breakcites}
+\usepackage{soul}
+\usepackage{url}
+\urlstyle{same}
+\usepackage[sorting=none, giveninits=true, natbib=true,
+    style=numeric, maxnames=2, 
+    abbreviate=flase, url=false,doi=false]{biblatex} 
 \addbibresource{References.bib}
+\DeclareFieldFormat{journaltitle}{#1\isdot}
+% \DeclareFieldFormat{journaltitle}{\underline{#1}} % it will be fix
+\DeclareFieldFormat{booktitle}{#1\isdot}
+\DeclareFieldFormat{labelnumberwidth}{{#1\adddot}}
+%%%%%%%% REFERENCES SETTINGS %%%%%%%%%%5
 \usepackage{fancyhdr}
 \usepackage{caption}
 \captionsetup{
@@ -101,4 +113,3 @@
 
 % Paragraph indent
 \setlength{\parindent}{1cm}
-
