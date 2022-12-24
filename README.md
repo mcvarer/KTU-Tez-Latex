@@ -29,13 +29,16 @@ metin arasında 1,5 satır aralığı 1 boşluk bırakılmalı
 - [x] 1. Genel Bilgiler ile başlayan kısmı, sayfanın **orta üst** kısmında yer alacak şekilde Arap rakamları (1, 2, 3) ile numaralandırılmalı
 - [x] Genel bilgiler  sayfasına numara **konmamalı** bölümünün ikinci sayfasında **2** ile başlamalı
 - [x] Alt başlıklar arasında **2 satır** aralığı 1 boşluk bırakılmalı
-- [x] Sabit değişkenler ayrı bir yere toplanacak
-- [x] Subsub section düzenlendi
-- [x] Matematik formülleri eklendi
-- [x] İçindekiler sayfası düzenlendi
+- [x] Sabit değişkenler ayrı bir yere toplanmalı
+- [x] Subsub section düzenlenmeli
+- [x] Matematik formülleri eklenmeli
+- [x] İçindekiler sayfası düzenlenmeli
+- [x] Tez veya Seminer arasındaki sayfa numaraları opsiyonel olarak eklenmeli
+- [x] Journal'lar altı çizili olmalı
+- [x] Table'ların kolonları sayfa genişliğini aşmamalı 
 - [ ] Okunurluk arttırılacak
 - [ ] Kodlara yorum satırı yazılacak
-- [ ] Dış kapaklar Enstüti Sayfasına göre tasarlanacak
+- [x] Dış kapaklar Enstüti Sayfasına göre tasarlanacak
 
 
 ## Dosya dizin yapısı
