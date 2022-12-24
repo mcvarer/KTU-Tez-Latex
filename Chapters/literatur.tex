@@ -1,72 +1,218 @@
 \chapter{Literatür Taraması}
 
-Derin öğrenme son yıllarda popüler bir araştırma konusu olmuştur. Bununla birlikte gelişen yüksek 
-hızlı hesaplamalı ekran kartları ile büyük boyutlu görüntülerin de çalışmaları artmıştır.\\
+Son yıllarda veri toplama / erişimin kolaylaşması ve bilgisayarların hesaplama gücünün artması nedeniyle derin mimariler son yıllarda makine öğrenimi alanında kullanışlı ve popüler hale geldi. Ve derin yöntemler, sahne etiketleme \citep{farabet2012learning}, rakam sınıflandırması \citep{sermanet2012convolutional}, karakter sınıflandırması \citep{ciresan2011convolutional}, yüz tanıma \citep{lawrence1997face}, doğal dil işleme \citep{kalchbrenner2014convolutional} gibi birçok sınıflandırma alanında etkinliğini kanıtlamıştır. Bu alanların yanı sıra, uzaktan algılama alanı, özellik çıkarma ve sınıflandırma için derin yöntemlerin etkinliğini de kullandı.
+Bu bölümde, hiperspektral görüntü sınıflandırması için derin mimariler öneren çalışmalar tartışılacaktır.
 
-Adaptive spatial-spectral feature learning network(ASSFLN) yöntemi olarak bir yöntem. İlk olarak görüntüyü parçalara bölme işlemi yapıldı ve daha sonra merkez-komşluk spectrum çiftleri oluşturulmuştur. Bu işlem adımlarından sonra vektör olarak çıkan sonuçlar 2B olarak birleştirdi. Daha sonra bunları ESA ve SAE(Stack Autoencoder) ile birlikte kullanmış. ESA işleminden sonra softmax normalizasyon ile ağırlık öğrenme ağı oluşturmuş. Daha sonra öğrenilen her bir ağırlığın özelliğini çıkarıp bunları  stack autoencoder a vermiş. Bu işlemin sonunda çıktıyı MLR( multinomial logistic regression) katmanına aktarıp sınıflandırmayı bu aşamada yapmıştır \cite{li2019adaptive}. Şekil 3.1'de anlatılan modelin görsel hali verilmiştir. \\
+%%18
+\citep{hu2015deep} 'de, özellikleri çıkarmak ve verileri sınıflandırmak için 5 katmanlı bir CNN benimsenmiştir. Yapıdaki katmanlar sırasıyla girdi, evrişim, maksimum havuzlama, tam bağlantılı ve çıktı katmanlarıdır. Bu basit yapı, birçok evrişimli katmana sahip tipik ESA'lar hiperspektral veriler için geçerli olmadığından benimsenmiştir.
 
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=1\textwidth]{Figures/assfln13.png}
-  \caption{ASSFLN modelinin genel olarak çalışma şekli ıoudoıwequroıweıroewuuıowreuıorewuıowrıwer }
-\end{figure}
+%%19
+\citep{yue2015spectral} 'de, hiperspektral görüntü sınıflandırması için ortak bir spektral-uzaysal çerçeve önerilmiştir. Bu makalede, boyut küçültme amacıyla temel bileşen analiz (PCA) kullanılmıştır. Görüntünün PCA'sı çıkarılır ve CNN'e beslenir. PCA yardımıyla, 103 kanaldan  komşu bölgenin boyutu ve piksel cinsinden spektral özellik haritası 42x42'e dönüştürülür.
+  Derin ESA yapısı 3 evrişimli ve 2 alt örnekleme katmanından oluşur. Spektral özellik 7 haritası, spektral vektörün 42 altvektöre bölünmesi ve her bir alt vektörün nokta çarpımının karekökü alınmasıyla oluşturulur. Sınıflandırma aşamasında LR seçilir.
+
+%%20
+\citep{li2019adaptive} 'da, ilk olarak görüntüyü parçalara bölme işlemi yapıldı ve daha sonra merkez-komşluk spectrum çiftleri oluşturulmuştur. Bu işlem adımlarından sonra vektör olarak çıkan sonuçlar 2B olarak birleştirdi. Daha sonra bunları ESA ve SAE(Stack Autoencoder) ile birlikte kullanıldı. ESA işleminden sonra softmax normalizasyon ile ağırlık öğrenme ağı oluşturmuş. Daha sonra öğrenilen her bir ağırlığın özelliğini çıkarıp bunları stack autoencoder a verildi. Bu işlemin sonunda çıktıyı MLR( multinomial logistic regression) katmanına aktarıp sınıflandırmayı bu aşamada yapmıştır.
+
+%%21
+\citep{zhao2015combining}'de, derin özellikleri çıkarmak için çok ölçekli bir evrişimli otomatik kodlayıcı (MCAE) geliştirilmiştir.
+Yapı 2 ana bileşene ayrılmıştır: özellik çıkarma ve sınıflandırma. İlk adımda, 2 tür özellik çıkarılır: spektral ve MCAE özellikleri. Spektral özellikler, PCA uygulanarak ve 3 temel bileşen (PC) alınarak elde edilir. Spektral özellikler elde edildikten sonra MCAE işlemi uygulanır. 3 için
+Her bir PC'ye karşılık gelen görüntüler, piramit havuzlaması, görüntülerin 3 ölçekte altörneklenmesi ile uygulanır. Ortaya çıkan görüntüler normalleştirilir ve ardından CNN'de eğitilir.
+CNN, filtre boyutu 7 * 7 olan 2 katmandan oluşur. Sigmoid fonksiyonları ve 2 * 2 max havuzlama işlemleri her katmana uygulanır. Çıktıda 315 özellik haritası elde edildi. Bu, her piksel için 315 boyuta karşılık gelir. Daha sonra, bu özellikleri kullanarak her numuneyi etiketlemek için bir lojistik regresyon sınıflandırıcı kullanılır.
+
+%%22
+\citep{liu2015hyperspectral}' de, verilerin spektral özellik temsillerini öğrenmek için yığılmış denoising otomatik kodlayıcılara (SDA) dayalı derin bir model tanıtıldı. Ayrıca, spektral sınıflandırma sonuçlarının iyileştirilmesi için uzamsal kısıtlamaları oluşturmak için süper pikseller konuşlandırılır.
+SDA'nın yapısı 5 katmandan oluşur: bir giriş katmanı, 3 gizli SDA katmanı ve bir çıkış katmanı. Pikseller, giriş katmanı olarak doğrudan ağa beslenir.
+Ardından, ağın çıkışına PCA uygulanır. Lab renk uzayını temel bileşenlerle değiştirdikten sonra, SLIC algoritması kullanılarak süper pikseller oluşturulur.
+Her süper pikselin sınırındaki pikseller için, sınıflandırma ayrı ayrı yapılır.
+Son olarak, sınıf etiketleri her süper pikselde çoğunluk oyuyla atanır.
+
+%%23
+\citep{zhao2016spectral}' de,  boyut azaltma için dengeli yerel ayırıcı gömme (BLDE) algoritması ile derin bir CNN modeli önerilmiştir.
+Hiperspektral örnekler, farklı sınıflar arasında sınıf içi varyasyon ve benzerlik gösterdiğinden, boyut azaltma yönteminin seçimi, sınıflandırma başarısında hayati bir role sahiptir.
+Her bir sınıfı ayırmayı amaçladıkları için denetimli boyut küçültme (DR) yöntemlerinin denetimsiz yöntemlere göre daha başarılı olduğu bilinmektedir. BLDE algoritması, farklı sınıflar arasındaki yerel marjı eşzamanlı olarak maksimize eden doğrusal bir eşlemeyi tahmin eder ve sınıf içinde numunelerin yakın kalmasını sağlar. Öte yandan, CNN, uzamsal ilişkili derin özellikleri çıkarmak için uygulanır. CNN'i uygulamadan önce, giriş verilerinin temel bileşenleri  PCA kullanılarak çekildi. Ardından, BLDE tabanlı özellikler CNN tabanlı özelliklerle istiflenir ve bir LR sınıflandırıcısına beslenir. Yöntem, Pavia Center ve Pavia Üniversitesi veri kümelerinde test edildi. DR işlemi önemli miktarda zaman alsa da, sonuçlar tatmin edicidir.
+
+%%24
+\citep{guo2018spectral}' de, yapay sinir ağı tabanlı bir çerçeve tanıtıldı. Bu makalede, derin özelliklerin ayrılabilirliğini artırmak için merkez kaybı parametresi oluşturulmuştur. Bu amaçla, her bir giriş özelliği ile her bir sınıfın karşılık gelen merkezi arasındaki mesafelerin ortalaması alınarak elde edilir. Her sınıfın merkezi, ilgili sınıfın özelliklerinin ortalaması alınarak belirlenir. Önerilen mimarinin kayıp fonksiyonu, softmax kaybına merkez kaybı eklenerek hesaplanır. Bu makalenin bir başka katkısı, belirli bir örneğe en yakın sınıf merkezine göre etiket atayan merkez sınıflandırıcı yaklaşımıdır. Yama tabanlı örnekler kullanılarak eğitilen diğer modellerden farklı olarak, bu yöntem eğitim aşamasında yalnızca spektral özellikleri besler. Test aşamasında mahalle alanı dikkate alınır. Verilen örneğin her bir sınıf merkezine uzaklığı 8 mahalle ölçeği (3x3, 5x5, ..., 17x17) için hesaplanmıştır. Aynı etikete sahip mahalleler toplandıktan sonra her sınıfın ağırlığı hesaplanır ve en fazla ağırlık ile örnek sınıfa atanır.
+
+%%25
+\citep{chen2018hyperspectral}' de, ilk olarak uzaysal alandaki yerel benzerliği göz önünde bulundurarak, hiperspektral görüntüden görüntü blokları elde etmek için büyük bir uzaysal pencere kullanıldı.
+İkinci olarak, görüntü bloğunun her bir spektral kanalı, uzaysal ve spektral özelliklerini çıkarmak için filtrelenir, bundan sonra özellikler evrişimli katmanlarla birleştirildi.
+Son olarak, sınıflandırma sonucunu elde etmek için tamamen bağlantılı katmanlar kullanılır.
+Ek olarak, hiperspektral görüntü sınıflandırmasının performansını artırmak için önerilen ağı geleneksel destek vektör makinesi (SVM) sınıflandırıcı ile birleştirir. Ayrıca, bu yazıda uzamsal pencere boyutları seçiminin uyarlanabilir bir yöntemi önerilmektedir. 
+
+%26
+\citep{paoletti2018new}' de, spektral-uzaysal bilgileri kullanan 5 katmanlı bir CNN modeli tanıtıldı. 3B çekirdekler, ayırt edici özellikler elde etmek için evrişimli katmanlara uygulanır. Örneği daha iyi tanımladığına inanarak 9, 19 ve 29 gibi çok büyük yama boyutları benimsenmiştir. Deneyler sırasında algoritma, 9x9 mahalle çıkarıldığında 1500 iterasyonla sınıflandırma hatasına ulaşırken, 19x19 pencere boyutunda aynı hata değerine ulaşmak için 1000 iterasyon gerekir. Görüntü n $x$ n parçaya bölünürken, sınırların etrafındaki pikseller ayıklanamaz. Bu algoritma, aynalama ile kenar piksellerini kopyalar ve bu pikselleri sınıflandırmaya dahil eder. Testler sırasında etkisini gözlemlemek için çeşitli eğitim örnekleri (50, 100 ve 200) kullanılır. En iyi sonuçlar 200 eğitim örneği ve 29x29 yama ile elde edilir.
+
+%%27
+\citep{yue2016deep}' de, uzamsal ve spektral özelliklerin SAE ve CNN aracılığıyla ve ardından bir LR sınıflandırıcı yoluyla birleştirilmesi için bir motor görevi görür. SAE, verilerin boyutunu küçülterek üst düzey özellikler elde edilmesi hedeflenmektedir. Geleneksel CNN, nesnelerin ölçek varyansına tolerans göstermediğinden, SPP ilk kez hiperspektral görüntü sınıflandırmasına, üst evrişimli katmanların uzamsal özellik haritalarını sabit uzunlukta bir özelliğe havuzlayarak tanıtıldı. Algoritma 4 adım içerir: SAE aracılığıyla derin spektral özelliklerin oluşturulması, bir CNN modelinin eğitilmesi ve üst evrişimli katmanların havuzlanması, spektral-uzamsal özellik ayarlama parametresinin belirlenmesi ve LR sınıflandırıcısını beslemek için spektral-uzamsal özelliklerin birleştirilmesi. Ayarlama parametresi deneylerle belirlenir ve özelliklerin ağırlık oranını düzenler.
+
+%%28
+\citep{zhong2017spectral}' de, hiperspektral görüntü sınıflandırması için özellik mühendisliği olmaksızın girdi verileri olarak ham 3-D küpleri alan uçtan-uca spektral-uzamsal artık ağ (SSRN). Bu ağda, spektral ve uzamsal kalıntı bloklar art arda hiperspektral görüntülemede (HSI) bol spektral imzalardan ve uzamsal bağlamlardan ayırt edici özellikleri öğrenir. Önerilen SSRN, diğer derin öğrenme modellerinin azalan doğruluk fenomenini hafifleten denetimli bir derin öğrenme çerçevesidir. Spesifik olarak, artık bloklar, gradyanların geri yayılmasını kolaylaştıran kimlik eşleme yoluyla diğer her 3-D evrişimli katmanı birbirine bağlar. Ayrıca, öğrenme sürecini düzenlemek ve eğitilmiş modellerin sınıflandırma performansını iyileştirmek için her evrişimli katmana toplu normalleştirme uygularız.
+
+%%29
+\citep{roy2019hybridsn} 'de, HSI sınıflandırması için bir Hibrit Spektral Evrişimli Sinir Ağı (HybridSN) önermektedir. Temel olarak, HybridSN, bir spektral-uzamsal 3D-CNN ve ardından uzamsal 2D-CNN'dir. 3D-CNN, bir dizi spektral banttan ortak uzaysal-spektral özellik temsilini kolaylaştırır. 3D-CNN'nin üstündeki 2D-CNN, daha fazla soyut düzeyde mekansal temsili öğrenir. Dahası, hibrit CNN'lerin kullanımı, tek başına 3D-CNN ile karşılaştırıldığında modelin karmaşıklığını azaltır.
+
+%%30
+\citep{bai2019ssdc} < < <  Eklenecek > > >
+
+%%31
+\citep{mirzaei2019hyperspectral} 'de ,3 Boyutlu Evrişimli Sinir Ağı (CNN) kullanarak hiperspektral görüntü sınıflandırma görevini ele alınmıştır. Yaygın olarak kullanılan ham spektral özellikler yerine, hiperspektral verileri Negatif Olmayan Tensör Çarpanlarına Ayırma (NTF) ile çarpanlara ayırarak ayırt edici özellikler elde edilir. Faktörler, son üyelerin spektral imza matrisinin yanı sıra bolluk matrisinden oluşur. Elde edilen bolluk haritaları, görüntünün uzamsal-spektral özelliklerini temsil eden özellik vektörlerini çıkarmak için kullanılır. piksellerin spektrumları veri matrisinin sütunlarında yığılır, uzamsal bilgiler NTF ile korunur.Morfolojik öznitelik filtreleri ayrıca çıkarılan bolluk haritalarına uygulanır ve bir 3D CNN'ye beslenen ayırt edici eğitim özelliklerini oluşturur. Görüntü sınıflandırması için bir 3D CNN çerçevesi. Ortak uzay-spektral özellikleri ve parametre paylaşımını kullanan bir 3D CNN, umut verici sınıflar sağlar. sınıflandırma performansı. Ayrıca sonuçları bir SVM sınıflandırıcıyla karşılaştırarak önerilen CNN'nin etkinliğini de göstermiştir.
+
+%%32
+\citep{he2019hsi} 'de , ilk hyperspectral görüntülerden tek tek pikselleri alıyor. Bu işlem için flat diye bir yöntem uyguluyor. Burada bahsedilen flat işlemi bu piksellerin birleştirmesini ifade ediyor. Sonra çıkardığı her bir pikselleri  başka bir yöntem olan pixel gömme olarak birleşitiryor.  Sonra BERT ismi verilen bir sıralı ağa veriyor. Bu işlemin ardından çıktıları tam-bağlı ağa verip burada eğittikten sonra sınıflandırma işlemi yapılmıştır. 
 
 \newpage
-Bir başka bir yöntem ise. İlki hyperspectral görüntülerden tek tek pikselleri alıyor. Bu işlem için flat diye bir yöntem uyguluyor. Burada bahsedilen flat işlemi bu piksellerin birleştirmesini ifade ediyor. Sonra çıkardığı her bir pikselleri  başka bir yöntem olan pixel gömme olarak birleşitiryor.  Sonra BERT ismi verilen bir sıralı ağa veriyor. Bu işlemin ardından çıktıları tam-bağlı ağa verip burada eğittikten sonra sınıflandırma işlemi yapıyor \cite{he2019hsi}. Şekil 3.2'de anlatılan modelin görsel hali verilmiştir. \\
 
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=1\textwidth]{Figures/bert14.png}
-  \caption{BERT modelinin genel olarak çalışma şekli }
-\end{figure}
-
-\newpage
-Yöntem temel olarak sınıflardan eşit örnek alınarak farklı ESA mimarilarinden oluşturulmuştur. Bu ESA mimarileri şunlardır; 3B-ESA, 2B-ESA,  D-3B ESA, D-2B ESA, D-Res-2B ESA, D-Res-3B-ESA mimarileri ile traning yapılıyor. Bunların çıktıları her birini bir vektör olarak hesaplıyor ve etkiket verileri ile arasında euclide uzaklığını hesaplıyor ve ardınan yitim( loss) fonksiyonuna veriyor. Danışmanlı özellikler(Supervised feature) çıkarıp Sinir Ağı(Neural Network) sınıflandırıcı ile sınıflandırıyor. Test amaçlı SVM ve bunun türevleri olan sınıflandırıca kulanılıyor fakat en iyi sonucu NN veriyor. Res olarak bahsedilen mimari son zamanlarda derin öğrenmede kullanılan residual olarak adı geçen yapıdır. Bir önceki ağdan gelen çıkıtıyı o anki ağdan çıkan çıktı ile toplama işlemi olarak kısaca anlatabiliriz \cite{roy2019hybridsn}. Şekil 3.3'de anlatılan modelin görsel hali verilmiştir. \\
-
-
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=1\textwidth]{Figures/hybrdidSN15.png}
-  \caption{HybridSN modelinin genel olarak çalışma şekli }
-\end{figure}
-
-\newpage
-Görüntü patchlere bölündükten sonra conv uygulanıp ardından pre-activation residual attention network yapılmıştır. Bunun amacı gradiant vanishing/explosing gibi problemleri önlemek ve sınıflandırma performansını arttırmak için yapmıştır. Sınıflandırma aşamasından önceği katman da ise global average pooling (GAP) kullanılmıştır ve daha sonra klasik sinir ağına verilip sınıflandırma yapılmıştır. Kayıp fonksiyonu olarak cross entropy loss kullanılmıştır. Residual blokları için relu kullanılmıştır. Son katman çıkışı olarak da sigmoid kullanılmıştır \cite{gao2019hyperspectral}.Şekil 3.4'de anlatılan modelin görsel hali verilmiştir. \\
-
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=1\textwidth]{Figures/gao16.png}
-  \caption{GAO modelinin genel olarak çalışma şekli }
-\end{figure}
-\newpage
-Giriş görüntüleri patchlere bölünüyor preporcessing olarak. Daha sonra spectral feature extraction için Evrişim 1*1 ve ReLU uygulanıyor.Bu işlemin ardından çoklu spectral-spatial feature learning işlemleri yapılıyor. Yanda görsel olarak verildiği gibi. Bu aşamadan sonra concatenated yapılıp feature fusion yaparak devam ediyor. Çıkış katmanında ise softmax kullanıyor \cite{bai2019ssdc}. Şekil 3.5'de anlatılan modelin görsel hali verilmiştir. \\
-
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=1\textwidth]{Figures/ssfl17.png}
-  \caption{SSDC-DenseNet modelinin genel olarak çalışma şekli }
-\end{figure}
-
-\newpage
-İki aşamalı bir modeldir. İlk aşamada samples extranctions , yani örneklerden özellik çıkarma işlemi yapılıyor. Sonra 3B-SRNet  ağı ile özellik çıkarımı ve sınıflandırma işlemi yapıyor \cite{jiang2019hyperspectral}. Şekil 3.6'de anlatılan modelin görsel hali verilmiştir. \\
-
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=1\textwidth]{Figures/3Dsrnet18.png}
-  \caption{3D-SRNet modelinin genel olarak çalışma şekli }
-\end{figure}
+\begin{table}[ht]
+\centering
+\begin{adjustbox}{width=1\textwidth}
+\begin{threeparttable} % <--- new
+\caption{Çalışmaların kısa açıklaması}
+\begin{tabular}{|l|l|l|L{5cm}|l|l|}
+\hline
+\textbf{İndeks}        & \textbf{Yöntem} & \textbf{Yıl} & \textbf{Önerilen Yeni Yöntem}                                                                     & \textbf{Boyut Azaltma} & \textbf{Yaklaşım} \\ \hline
+\citep{hu2015deep}             & ESA             & 2015         & 1 katmanlı evrişim ile basit bir ESA                                                              & -                      & Danışmanlı        \\ \hline
+\citep{yue2015spectral}        & ESA             & 2015         & verileri 42 alt vektöre bölmek ve her bir alt vektörün iç çarpımını almak                         & PCA                    & Danışmanlı        \\ \hline
+\citep{li2019adaptive}         & ESA             & 2019         & verileri 7x7 alt vektörlere bölüp spektrumların yakın  komuşluklarını ESA ve ardında SAE birlikte & PCA                    & Danışmanlı        \\ \hline
+\citep{he2019hsi}              & ANN             & 2020         & görüntüdeki pikselleri tek bir boruya aktarıp daha çift yönlü trafo (BERT) ile kullanımı          & -                      & Danışmanlı        \\ \hline
+\citep{roy2019hybridsn}        & ESA             & 2020         & 3B-ESA ve ardından 2B-ESA ile sınıflandırma işlemi                                                & PCA                    & Danışmanlı        \\ \hline
+\citep{jiang2019hyperspectral} & ESA             & 2019         & 3B-ESA ve Transfer Learning                                                                       & -                      & Danışmanlı        \\ \hline
+\end{tabular}
+\end{threeparttable}
+\end{adjustbox}
+\end{table}
 
 
+\begin{table}[ht]
+\centering
+\begin{adjustbox}{width=1\textwidth}
+\begin{threeparttable} % <--- new
+    \caption{Pavia Üniversitesi için sonuçlar}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{İndeks} & \textbf{Yöntem} & \textbf{Eğitim Seti}                                                                      & \textbf{OA(\%)} & \textbf{AA(\%)} & \textbf{Kappa} \\ \hline
+\citep{zhao2015combining}               & ESA             & 3921                                                                                      & 96.37           & 95.06           & 0.95           \\ \hline
+\citep{liu2015hyperspectral}               & SdA             & 42.776 (\%10)                                                                             & 96.7            & 95.4            & 0.95           \\ \hline
+\citep{yue2015spectral}               & DCNNs           & 3921                                                                                      & 95.18           & 93.51           & 0.9364         \\ \hline
+\citep{zhao2016spectral}               & SSFC            & 450 + 2700                                                                                & 96.98           & -               & -              \\ \hline
+\citep{yue2016deep}               & SAE-DCNNs       & 3921                                                                                      & 96.28           & 96.31           & 0.9511         \\ \hline
+\citep{guo2018spectral}               & ANNC-SCC        & 1800                                                                                      & 93.60           & 93.68           & 0.9145         \\ \hline
+\citep{chen2018hyperspectral}               & ESA-SVM         & \begin{tabular}[c]{@{}c@{}}Her class\\ \%20\end{tabular}                                  & 98.44           & -               & -              \\ \hline
+\citep{zhong2017spectral}               & SSRN            & \begin{tabular}[c]{@{}c@{}}4281 -\textgreater train\\ 4281 -\textgreater val\end{tabular} & 99.79           & 99.66           & 0.9972         \\ \hline
+\citep{paoletti2018new}               & ESA             & \begin{tabular}[c]{@{}c@{}}Her class\\ 200 tane\\ (27x27)\end{tabular}                    & 97.80           & 98.29           & 0.9709         \\ \hline
+\citep{roy2019hybridsn}              & 3B-2B-ESA       & \begin{tabular}[c]{@{}c@{}}\%20\\ (25x25x15)\end{tabular}                                 & 99.98           & 99.98           & 0.9997         \\ \hline
+\citep{bai2019ssdc}              & SSDC-DenseNet   & \begin{tabular}[c]{@{}c@{}}\%5 train\\ \%15 val\end{tabular}                              & 99.84           & 99.72           & 0.9979         \\ \hline
+\citep{li2019adaptive}              & ASSFL           & 4278                                                                                      & 99.88           & 99.54           & 0.9971         \\ \hline
+\citep{mirzaei2019hyperspectral}              & BCP-3B-ESA      & \begin{tabular}[c]{@{}c@{}}Her class\\ \%20\end{tabular}                                  & 97.53           & 97.65           & -              \\ \hline
+\citep{jiang2019hyperspectral}              & 3B-SRNet        & 3930                                                                                      & 99.92           & 99.94           & 0.9990         \\ \hline
+\citep{gao2019classification}              & pbCNN+DPR       & \begin{tabular}[c]{@{}c@{}}Her class\\ 200 tane\end{tabular}                              & 99.26           & 99.16           & 0.9902         \\ \hline
+\citep{wang2019classification}              & 3D-CNN-JM       & 8558                                                                                      & 99.42           & 99.29           & 0.9927         \\ \hline
+\citep{gao2019hyperspectral}              & PRAN            & \begin{tabular}[c]{@{}c@{}}train 4273\\ val 4273\end{tabular}                             & 99.92           & 99.87           & 0.9990         \\ \hline
+\citep{ouyang2018convolutional}              & CNN-JL-G        & \begin{tabular}[c]{@{}c@{}}Her class\\ 100 tane\end{tabular}                              & 97.19           & 97.42           & 0.9627         \\ \hline
+\citep{he2019hsi}              & HSI-BERT        & \begin{tabular}[c]{@{}c@{}}Her class\\ 200 tane\end{tabular}                              & 99.75           & 99.86           & -              \\ \hline
+\citep{liu2020sparse}              & STC             & \begin{tabular}[c]{@{}c@{}}Her class\\ 200 tane\end{tabular}                              & 98.50           & 98.34           & 0.9798         \\ \hline
+\citep{cao2020cascaded}              & CDSCN           & \begin{tabular}[c]{@{}c@{}}train 4281\\ val 4281\\ (7x7)\end{tabular}                     & 99.84           & 99.79           & 0.9872         \\ \hline
+\end{tabular}
+    \end{threeparttable}
+    \end{adjustbox}
+\end{table}
+
+
+\begin{table}[ht]
+\centering
+\begin{adjustbox}{width=1\textwidth}
+\begin{threeparttable} % <--- new
+    \caption{India Pines için sonuçlar}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{İndeks} & \textbf{Yöntem}    & \textbf{Eğitim Seti}                                                                      & \textbf{OA(\%)} & \textbf{AA(\%)} & \textbf{Kappa} \\ \hline
+\citep{ma2016spectral}               & SDAE-CR            & \begin{tabular}[c]{@{}c@{}}Her class\\ \%10\end{tabular}                                  & 99.22           & 98.54           & 0.9911         \\ \hline
+\citep{chen2018hyperspectral}               & ESA-SVM            & \begin{tabular}[c]{@{}c@{}}Her class\\  \%20\end{tabular}                                 & 98.39           & -               & -              \\ \hline
+\citep{zhong2017spectral}               & SSRN               & \begin{tabular}[c]{@{}c@{}}2055 -\textgreater train\\ 1024 -\textgreater val\end{tabular} & 99.19           & 98.93           & 0.9907         \\ \hline
+\citep{paoletti2018new}               & ESA                & \begin{tabular}[c]{@{}c@{}}2466\\ (29x29)\end{tabular}                                    & 98.37           & 99.27           & 0.9815         \\ \hline
+\citep{roy2019hybridsn}               & 3B-2B-ESA & \begin{tabular}[c]{@{}c@{}}\%30\\ (25x25x30)\end{tabular}                                        & 99.75                 & 99.71           & 0.9963         \\ \hline
+\citep{bai2019ssdc}               & SSDC-DenseNet      & \begin{tabular}[c]{@{}c@{}}\%15 train\\ \%10 val\end{tabular}                             & 99.53           & 99.41           & 0.9947         \\ \hline
+\citep{li2019adaptive}               & ASSFL              & 1024                                                                                      & 98.18           & 97.80           & 0.9789         \\ \hline
+\citep{mirzaei2019hyperspectral}               & BCP-3B-ESA         & \begin{tabular}[c]{@{}c@{}}Her class\\ \%10\end{tabular}                                  & 98.33           & 98.72           & 0.9810         \\ \hline
+\citep{jiang2019hyperspectral}               & 3B-SRNet           & 1765                                                                                      & 98.88           & 99.38           & 0.9869         \\ \hline
+\citep{gao2019classification}              & pbCNN+MRF          & 2215                                                                                      & 97.98           & 98.10           & 0.9742         \\ \hline
+\citep{wang2019classification}              & 3D-CNN-JM          & 2055                                                                                      & 98.90           & 98.91           & 0.9862         \\ \hline
+\citep{gao2019hyperspectral}              & PRAN               & \begin{tabular}[c]{@{}c@{}}train 2045\\ val 1018\end{tabular}                             & 99.67           & 99.37           & 0.9962         \\ \hline
+\citep{ouyang2018convolutional}              & CNN-JL-G           & 1342                                                                                      & 95.48           & 96.04           & 0.9477         \\ \hline
+\citep{he2019hsi}              & HSI-BERT           & 1600 (8 class)                                                                            & 99.56           & 99.72           & -              \\ \hline
+\citep{liu2020sparse}              & STC                & 1550                                                                                      & 97.53           & 97.60           & 0.9716         \\ \hline
+\citep{cao2020cascaded}              & CDSC               & \begin{tabular}[c]{@{}c@{}}train 2055\\ val 1025\\ (7x7)\end{tabular}                     & 99.62           & 99.57           & 0.9951         \\ \hline
+\end{tabular}
+    \end{threeparttable}
+\end{adjustbox}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{adjustbox}{width=1\textwidth}
+\begin{threeparttable} % <--- new
+    \caption{Salians için sonuçlar}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{İndeks} & \textbf{Yöntem} & \textbf{Eğitim Seti}                                          & \textbf{OA(\%)} & \textbf{AA(\%)} & \textbf{Kappa} \\ \hline
+\citep{guo2018spectral}               & ANNC-SCC        & 3200                                                          & 93.12           & 97.12           & 0.9230         \\ \hline
+\citep{roy2019hybridsn}               & 3B-2B-ESA       & \begin{tabular}[c]{@{}c@{}}\%30\\ (25x25x15)\end{tabular}     & 100             & 100             & 1              \\ \hline
+\citep{bai2019ssdc}               & SSDC-DenseNet   & \begin{tabular}[c]{@{}c@{}}\%5 train\\ \%15 val\end{tabular}  & 99.73           & 99.81           & 0.997          \\ \hline
+\citep{li2019adaptive}               & ASSFL           & 5415                                                          & 99.91           & 99.87           & 0.9968         \\ \hline
+\citep{mirzaei2019hyperspectral}               & BCP-3B-ESA      & \begin{tabular}[c]{@{}c@{}}Her class\\ \%20\end{tabular}      & 99.76           & 99.57           & -              \\ \hline
+\citep{gao2019classification}               & pbCNN+DPR       & \begin{tabular}[c]{@{}c@{}}Her class\\ 200 tane\end{tabular}  & 98.14           & 99.15           & 0.9792         \\ \hline
+\citep{gao2019hyperspectral}               & PRAN            & \begin{tabular}[c]{@{}c@{}}train 5403\\ val 5403\end{tabular} & 99.90           & 99.93           & 0.99.89        \\ \hline
+\citep{he2019hsi}               & HSI-BERT        & \begin{tabular}[c]{@{}c@{}}Her class\\ 200 tane\end{tabular}  & 99.56           & 99.84           & -              \\ \hline
+\end{tabular}
+    \end{threeparttable}
+    \end{adjustbox}
+\end{table}
+
+
+
+
+%33
+\citep{jiang2019hyperspectral} 'de, iki aşamalı bir modeldir. İlk aşamada samples extranctions , yani örneklerden özellik çıkarma işlemi yapılıyor. Sonra 3B-SRNet  ağı ile özellik çıkarımı ve sınıflandırma işlemi yapıyor. 
 
 
 
 
 
+\citep{gao2019classification}'de, ilk olarak, temsili özelliklerin çıkarılması için iki evrişimli sinir ağı (CNN'ler) geliştirildi.
+Özellikle, piksel bazlı bir CNN ve yama bazlı bir CNN, özellikle spektral özellikleri ve spektral-uzamsal özellikleri çıkarmak için tasarlandı. İki sinir ağı, çeşitli evrişimli, havuzlama ve etkinleştirme katmanlarından oluşur ve test piksellerinin sınıf üyelik olasılıklarını tahmin edebilir. İkinci olarak, olasılıksal sonuçları Bayesci bir perspektiften rafine etmek için iki olasılıklı gevşeme yöntemi, yani Markov rasgele alanları ve gevşemeyi koruyan süreksizlik, çerçeveye entegre edildi. Spektral alanda piksel bazlı bir olasılıklı CNN oluşturulur ve hem spektral hem de uzamsal alanlarda yama bazlı bir olasılıklı CNN oluşturulur. Olasılıksal gevşeme, MRF, sırasıyla spektral ve uzaysal enerjiyi temsil eden iki terim içeren bir enerji fonksiyonunun bir minimizasyonu olarak formüle edilmiştir. Herhangi bir PR metodu içermeyen piksel bazlı CNN (pwCNN olarak anılır) ve herhangi bir PR metodu içermeyen 3D yama bazlı CNN (pbCNN olarak anılır), kıyaslama sınıflandırıcıları olarak kullanıldı.
 
 
+\citep{wang2019classification} < < < Eklenecek > > >
+
+\citep{gao2019hyperspectral}' de, HSI sınıflandırması için yeni bir uçtan-uca aktivasyon öncesi artık dikkat ağı (PRAN) önermektedir. Ön aktivasyon mekanizması ve dikkat mekanizması, önerilen ağa dahil edilir ve önerilen ağın, kanal yanıtlarının yeniden kalibrasyon özelliğini uyarlamalı olarak taşımasına ve daha sağlam spektral-mekansal eklem öğrenmesine olanak tanıyan bir ön aktivasyon artık dikkat bloğu (PRAB) tasarlanmıştır. özellik gösterimleri. Önerilen PRAN, iki PRAB ve farklı çekirdek boyutlarına sahip birkaç evrişimli katmanla donatılmıştır, bu da PRAN'ın yüksek düzeyde ayırt edici özellikler elde etmesini sağlar.
+
+\citep{ouyang2018convolutional}' de, yeniden yapılandırma ve ayırt edici kayıp fonksiyonları ile birlikte eğitilen, evrişimli sinir ağına dayalı hiperspektral görüntü sınıflandırma yöntemini önermiştir. Ağda, küçük evrişimli çekirdekler, özellik soyutlamasını gerçekleştirmek için havuzlama operatörü ile kademeli hale getirilir ve ters evrişimli ve paylaşımsız operatörlerden oluşan bir kod çözme kanalı kurulur. Kod çözme kanalı tarafından gerçekleştirilen denetimsiz yeniden yapılandırma, yalnızca ağ eğitimine öncelik vermekle kalmaz, aynı zamanda soyutlanmış özelliklerin kontrol kapısı tarafından ayırt edilebilirliğini artırmak için de kullanılır.
+
+\citep{liu2020sparse} ' de, HSI için seyrek tensöre dayalı bir sınıflandırma (STC) yöntemi önerilmektedir. Geleneksel vektör tabanlı veya matris tabanlı yöntemlerden farklı olarak STC, ortak uzaysal-spektral tensör özelliklerini çıkarmak için tensör tekniğini kullanır. Sınıf içi uzamsal-spektral varyasyonu hafifletmek ve aynı anda sınıflandırma performansını iyileştirmek için temel bileşen analizi (PCA) ve HSI'nin 3-D içsel uzamsal-spektral tensörlerinden yararlanıyoruz. 
+
+\citep{cao2020cascaded}' de, HIC için yalnızca zengin özellikleri çıkarmakla kalmayıp aynı zamanda ağı daha da derinleştirmeyen, kademeli çift ölçekli bir geçiş ağı önermektedir. İki farklı kademeli çift ölçekli geçiş bloğunu sürekli olarak birbirine bağlar ve HSI'lerin spektral-uzamsal özelliklerini otomatik olarak çıkarır. Ayrıca, sınırlı eğitim örnekleri için, önerilen ağ, farklı spektral boyutlu ve uzamsal boyutlu evrişim çekirdekleri kullanarak daha ayırt edici bağlamsal özellikleri esnek bir şekilde yakalayabilir. Ayrıca, görüntülerin ilgi alanlarını elde etmek için görüntülerin bilgi akışını ve kontrastını iyileştirmek için iki farklı çapraz birleştirme yöntemi tasarlanmıştır. Aşırı uyumu azaltmak ve ağ eğitimini hızlandırmak için iki atlama yapısı da kullanılır. 
+
+\citep{ma2016spectral}'de,  uzamsal güncellenmiş derin otomatik kodlayıcı (SDAE) ve işbirliğine dayalı temsile dayalı bir sınıflandırmayı dağıtan bir spektral-uzamsal sınıflandırma yöntemi önerilmiştir. Algoritma 3 bölümden oluşur: özellik gösterimi, sınıflandırma ve uzamsal düzenleme. Özellik çıkarma adımında hem spektral hem de uzamsal özellikler elde edilir. Spektral özellikler çıkarılırken, her numune arasındaki korelasyon hesaplanır ve bu benzerlik düzenleme terimi, otomatik kodlayıcının enerji fonksiyonuna eklenir. Böylelikle kodlama işlemi sırasında benzer örnekler arasındaki korelasyonun korunması amaçlanmıştır. Mekansal bilgiyi dikkate almak için gizli katmandan sonra bir güncelleme katmanı eklenir. Güncelleme katmanında, her bir özellik, çevreleyen örneklerden hesaplanan özelliklerin ağırlıklı ortalaması ile değiştirilir. Her örneğin ağırlığı, merkezden Öklid mesafesine göre üssel olarak değişir. Tüm katmanları önceden eğittikten sonra, eğitimi denetlemek için çıktı katmanına çok terimli lojistik regresyon (MLR) eklenir. Sınıflandırma adımında işbirlikçi temsile dayalı sınıflandırma uygulanır. Burada, her test örneğinin özellikleri, eğitim özelliklerinin doğrusal kombinasyonları olarak açıklanmaktadır. Klasik seyrek gösterime dayalı bir sınıflandırma kullanılarak, her bir test numunesinin sınıf etiketi belirlenir. Çerçeve, numuneler sınırlı olduğunda başarılı olacak şekilde tasarlanmıştır, bu nedenle deneyler küçük eğitim setleriyle gerçekleştirilir.
+
+\citep{li2017spectral}' de, hiperspektral verilerde bulunan hem spektral hem de uzamsal bilgiden tam olarak yararlanan bir 3D-CNN çerçevesi önerilmektedir. erhangi bir ön işleme ve son işleme operasyonu olmadan, yöntem, giriş görüntüsüne doğrudan 3B çekirdekleri uygular.
+Mimari 2 evrişimli katmandan ve tamamen bağlantılı bir katmandan oluşur, havuzlama işlemi uygulanmaz. Çekirdeklerin boyutu deneylerle belirlenir.
+
+\citep{sellami2019hyperspectral}'de, uyarlanabilir boyut azaltma (ADR) ve hiper-spektral görüntülerin (HSI) spektro-uzamsal sınıflandırması için yarı denetimli 3-D evrişimli sinir ağına (3-D CNN) dayalı yeni bir yaklaşım önermektedir.
+En alakalı spektral bantları seçerek boyutluluk laneti ve sınırlı sayıda eğitim örneği sorununu çözer.
+Seçilen gruplar bilgilendirici, ayrımcı ve ayırt edici olmalıdır. Yarı denetimli bir 3-D CNN özellik çıkarıcıya beslenirler, ardından sınıflandırma haritasını oluşturmak için bir doğrusal regresyon sınıflandırıcıya beslenirler. Aslında, önerilen yarı denetimli 3-D CNN modeli, HSI sınıflandırmasını geliştirmek için evrişimli kodlayıcı-kod çözücüye dayalı derin spektral ve uzamsal özellikleri çıkarmayı amaçlamaktadır. Bu özellikleri seçilen ilgili bantlardan çıkarmak için birkaç 3-D evrişim ve maksimum havuz katmanı kullanır. Önerilen yaklaşımın temel avantajı, HSI'nin yüksek boyutluluğunu azaltmaktır,
+ilgili spektro-uzamsal bilgileri koruyun ve birkaç etiketli eğitim örneği kullanarak sınıflandırmayı geliştirin. hiperspektral görüntülerin (HSI'ler) spektro-uzaysal sınıflandırması için yarı denetimli 3-D evrişimli sinir ağı (3-D CNN).
+yarı denetimli bir 3-D CNN özellik çıkarıcıya beslenir, ardından sınıflandırma haritasını oluşturmak için doğrusal bir regresyon sınıflandırıcıya beslenir. Aslında, önerilen yarı denetimli 3-D CNN modeli, HSI sınıflandırmasını geliştirmek için evrişimli kodlayıcı-kod çözücüye dayalı derin spektral ve uzamsal özellikleri çıkarmayı amaçlamaktadır.
+Bu özellikleri seçilen ilgili bantlardan çıkarmak için birkaç 3-D evrişim ve maksimum havuz katmanı kullanır. Önerilen yaklaşımın temel avantajı, HSI'nin yüksek boyutluluğunu azaltmak, ilgili spektro-uzaysal bilgileri korumak ve birkaç etiketli eğitim örneği kullanarak sınıflandırmayı geliştirmektir.
 
 
+\citep{xing2016stacked}' de, denetlenmemiş eğitimin yığılmış denoising otomatik kodlayıcılar ve lojistik regresyon (LR) yoluyla denetimli ince ayar yoluyla elde edildiği durumlarda, SDAE tabanlı derin bir yöntem önerilmektedir. ReLU, özelliklerin ayrılabilirliğini artırdığı için aktivasyon fonksiyonu olarak seçilmiştir. Her DAE katmanı bağımsız olarak eğitilir ve kod çözme katmanları eğitimden sonra kaldırılır. Çıktı katmanına lojistik regresyon eklenir sınıflandırma için. Makalede hiperspektral görüntünün uzamsal bilgisinden yararlanılmamıştır. Deneylerde üç veri kümesi kullanılmıştır: Indian Pines, Botsvana ve Pavia Üniversitesi. Üç ağ parametresi, katman sayısı, her katmandaki birim sayısı ve Gauss gürültüsünün standart sapması, doğrulama verileri üzerindeki optimal sınıflandırma sonuçları.
+Algoritmanın hesaplama süresi, doğrusal çekirdekli SVM ve RBF çekirdekli SVM yöntemleriyle karşılaştırılır.
+Önerilen yöntemin RBF çekirdekli SVM'den çok daha hızlı ve doğrusal çekirdekli SVM'den biraz daha yavaş olduğu görülmüştür.
 
 
+\citep{deng2019deep}'de , hem aynı hem de sahneler arası HSI sınıflandırmaları için görevleri karşılayabilen derin metrik öğrenmeye dayalı bir özellik yerleştirme modeli öneriyoruz. İlk görevde, yalnızca birkaç etiketli örnek mevcut olduğunda, derin gömme özelliklerine dayalı metrik öğrenmeden elde edilen fikirleri kullanırız ve örnek çiftleri arasında bir benzerlik öğrenimi yaparız. Bu durumda, önerilen model iki örneğin aynı sınıfa ait olup olmadığını karşılaştırmayı iyi öğrenebilir. Başka bir görevde, sınıflandırılması gereken bir HSI görüntüsü (hedef sahne) hiç etiketlenmediğinde, gömme modeli yeterli etiketli örneklerle başka bir benzer HSI görüntüsünden (kaynak sahne) öğrenebilir ve ardından kullanarak hedef modele aktarabilir. yalnızca kaynak ve hedef örneklerden gömme özelliklerini ayırt edilemez hale getirmek için rakip yaklaşımı kullanan değil, aynı zamanda hedef sahnenin yerleştirmelerini kaynak sahne biriyle benzer kümeler oluşturmaya teşvik eden denetimsiz bir alan uyarlama tekniği. İki sahnenin HSI'leri arasındaki alan uyarlaması tamamlandıktan sonra, herhangi bir geleneksel HSI sınıflandırıcı kullanılabilir. Basit bir şekilde, bu makale boyunca sınıflandırma görevleri için sınıflandırıcı olarak en yakın komşu (NN) algoritması seçilmiştir.
 
 
+\citep{zhou2019semisupervised}' de, HSI sınıflandırması için yeni bir DL çerçevesi, yani yardımcı eğitimli yarı denetimli yığınlanmış otomatik kodlayıcılar (Yarı SAE'ler) sunuyoruz. İlk olarak, sırasıyla hiperspektral özelliklere ve uzamsal özelliklere dayalı olarak iki SAE önceden eğitilir. İkinci olarak, iki SAE için alternatif olarak yarı denetimli bir eş eğitim şeklinde ince ayar yapılır, burada ilk eğitim seti etkili bir bölge büyütme yöntemi tasarlanarak büyütülür. Son olarak, iki SAE tarafından elde edilen sınıflandırma olasılıkları, yinelenen koşullu modlarla çözülen bir Markov rastgele alan modeli kullanılarak birleştirilir.
+
+\citep{kamilaris2018deep}
