@@ -115,15 +115,23 @@
   {\normalfont\normalsize\bfseries}{\thesubsubsection.}{.5em}{}
 \titlespacing{\subsubsection}{1cm}{\mytwovspace plus 4pt minus 2pt}{\myonehalfvspace plus 2pt minus 2pt}
 
-%%%% Sayfa numaralarının üstten ve ortada olması için
+%%%% Sayfa numaralarının ÜSTTEN ve ortada olması için %%%%%%%%
 \fancypagestyle{plain}{%
  \fancyhf{}
   \fancyhead[C]{\thepage}
   \renewcommand{\headrulewidth}{0pt}
   \setlength{\headheight}{15pt}% ...at least 14.60004pt
 }
-\pagestyle{plain}
+ \pagestyle{plain}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+%%%% Sayfa numaralarının ALTTAN ve ortada olması için %%%%%%%%%%%%
+%\pagestyle{fancy}
+%\fancyhf{}% Clear page header/footer
+%\renewcommand{\headrulewidth}{0pt}% No header rule
+%\fancyfoot[C]{\thepage}
+%\floatpagestyle{fancy}% Page style for float-page only
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagenumbering{arabic}
 \setstretch{1.5}
-
