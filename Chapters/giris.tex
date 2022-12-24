@@ -1,104 +1,101 @@
-\chapter{Giriş}
+\chapter{GENEL BİLGİLER}
 \thispagestyle{empty}
+Bu başık altında  Uzaktan Algılama (Remote Sensing- RS) nın tanımı ve kullanılım alanlarından bahsedilecek. Bununla birlikte Hiperspektral Görüntüleme (Hyperspectral Imaging- HSI) hakkında genel bilgiler verilecek. Geçmişten günümüze teknolojik olarak ilerlemesinde bahsedildikten sonra Evrişim Sinir Ağı (Convolution Neural Network- CNN) temel yapısı anlatılacak. Hangi amaçla geliştirildi nerelerde daha çok tercih ediliyor. Geliştirdiğimiz modelde kullandığımız Varyasyonel Oto-Kodlayıcı (Variational Autoencoder- VAE) çalışma şekli anlatılacaktır.
 
-Yüksek hesaplamaların daha hızlı yapıldığı günümüz teknolojisinde artık işlem yükü fazla olan projeler daha kolaylıkla yapılmaktadır. Evrişimli sinir ağları (ESA) (Convolution Neural Networks (CNN) ) görüntüler için sınıflandırma problemlerini çözmek amaçlı geliştirilmiş bir derin öğrenme modelidir. Uzaktan algılama, dünyanın yüzeyi hakkında bilgi edinme bilimidir. Günümüzde uzaktan algılama başta askeri hava sahası olmak üzere deprem hazılığı aşamasında toplanma bölgelerinin de belirlenmesinde önemli rol oynamaktadır. Derin öğrenme, öğrenme düzeylerini temsil eden makine öğrenmesinin dalını ifade eder yani burada bahsi geçen derin kelimesi, sınıflandırılacak görüntülerin özelliklerini sinir ağı yapısının derinliğinden alır. Varyasyonel Oto-Kodlayıcı (VOK) (Variational AutoEncoder (VAE) ), temelde yarı-danışmalı öğrenme olarak kullanılan bir yöntemdir. Amaç görüntülerin boyutu küçülterek daha farklı görüntülerin elde edilmesi için gizli katman adı verilen alanda Gaussian gürültüsü uygulayarak temelde çeşitliliği arttırmaktır. Bu tez çalışmasında uydudan çekilmiş Hiperspektral Görüntüleri (Hiperspectral Images (HSI) ) CNN modelini kullanarak sınıflandırılması yapılacaktır.
-\section{Hiperspektral Nedir}
-Hiperspektral görüntüleme yöntemleri askeri uygulamar, kimyasal analizler, tarım alanı analizeleri gibi birçok alanda kullanılmaktadır. Görüntünün kaydedilmesi esnasında her piksel değerine objeden yansıyan ışığın dalga boyları kaydedilerek oluşturulan matris verileri ile hipersipektral görüntü elde edilmektedir. Hiperspektral görüntüleme ile görünür dalga boyu (400-700nm) haricinde kızıl ötesi gibi diğer dalga boylarına ait veriler de elde edilmektedir. Bu veriler yardımı ile spektral imzalar elde edilmektedir. Hiperspektral görüntüleme uygulamaları çoğunlukla görünür ışıkta aynı renge sahip birbirine karışmış birçok bileşenin ayırt edilmesinde kullanılmaktadır. Bu çalışamda genel kullanınım aksine, hiperspektral görüntüleme yöntemi nesnelerin spektral imzasının zamanla değişimini konu almaktadır. 
-\subsection{Hiperspektral ile Gabor}
-Son yıllarda hiperspektral görüntülerin sınıflandırılmasında
-da Gabor filtrelerinden faydalanılmıştır. Bu
-çalışmalarda Gabor filtrelerinin kullanım amacı genel olarak
-piksellerin uzaysal, spektral ve hibrid uzaysal-spektral
-karakteristiklerinin elde edilmesi olarak vurgulanmıştır.
-Gabor filtreleri içerdikleri farklı ölçek ve açılarda frekans
-bileşenleri ile yukarıda sayılan piksel bilgilerini
-sağlayabilmektedir. Gabor filtre bankası kısa dönemli
-Fourier dönüşümünün geliştirilmiş hali olduğu için
-incelenen görüntülerde Fourier dönüşümünün avantajlarını
-sunmaktadır. Hiperspektral görüntülerdeki bazı ayırt
-edilmesi zor piksel bölgelerinin tanınmasında bu bilgiler
-katkı sağlamıştır.
-\begin{table}[!ht]
-\centering
-    \begin{threeparttable} % <--- new
-    \caption{Sonuçların sayısal değeleri}
-        \begin{tabular}{|c|c|c|c|}
-        \hline
-        \textbf{Veriseti Adı} & \textbf{Kappa(\%)} & \textbf{Ortalama Doğruluk} & \textbf{Genel Doğruluk} \\ \hline
-        Indian Pines & 0.989    & 99.038           & 99.038         \\ \hline
-        Salinas & 0.999    & 99.881          & 99.881         \\ \hline
-        \end{tabular}
-    \end{threeparttable} % <--- new
-\end{table}
 
-\subsection{Matematik Formülleri}
-Metin içinde formül örneği $f(x) = x^2$ .
-\begin{equation}
-  1 + 2 = 3 
-\end{equation}
+\citep{eismann2012hyperspectral} bir yazarlı 
+\citep{lu2014medical} iki yazarlı
+\citep*{lowe2017hyperspectral} üç yazarlı
+\citep{lowe2017hyperspectral} üç yazarlı
 
-\begin{align}
-  f(x) &= x^2
-\end{align}
+\section{Giriş}
+Uzaktan algılama, nesnelerden yansıyan veya yayılan radyasyona dayalı olarak Dünya yüzeyinde veya yakınında bulunan nesneler ve atmosfer hakkında bilgi sağlar. Bilgiler genellikle belli bir mesafede yakalanır ve veriler görüntü biçimindedir.
+Bu tür veriler, Dünya yüzeyinin ve atmosferinin bileşimini ve doğasını yerelden küresel ölçeklere kadar belirlememizi ve farklı noktalarda yakalanan görüntüleri analiz ederek değişiklikleri değerlendirmemizi sağlar.
+Bu anlamda, uzaktan algılama, başka türlü elde edilmesi zor veya imkansız olan uzamsal bilgilerin sağlanmasında yararlıdır. Sosyal bilimlerde uzaktan algılama, insan ortamlarını görselleştirmek (alternatif ve sinoptik görüşler sağlamak) ve sınıflandırmak için kullanışlıdır. Sosyal bilim araştırmacıları, uzamsal analizler yapmak için genellikle uzaktan algılanan verileri veya türevlerini Coğrafi Bilgi Sistemleri (Geographic Information Systems- GIS) içindeki diğer sosyoekonomik veri setleriyle entegre eder. Dünyanın yüzeyi, uzaktan algılamanın temelini temsil eder. Uzaktan algılamada, radyasyon tipik olarak ölçülür ve logaritmik bir ölçek kullanılarak dalga boyuna göre kategorize edilir. Dalgaboyu aralığı elektromanyetik spektrum olarak bilinir (Şekil 1.1) \cite{READ2009335}.
 
-\begin{align}
-          \sin A \cos B &= \frac{1}{2}\left[ \sin(A-B)+\sin(A+B) \right] \\
-          \sin A \sin B &= \frac{1}{2}\left[ \sin(A-B)-\cos(A+B) \right] \\
-          \cos A \cos B &= \frac{1}{2}\left[ \cos(A-B)+\cos(A+B) \right] 
-\end{align}
-
-\begin{equation} 
-    \label{eq1}
-    \begin{split}
-        A & = \frac{\pi r^2}{2} \\
-         & = \frac{1}{2} \pi r^2
-    \end{split}
-\end{equation}
-
-\begin{align}
-\left[
-\begin{matrix}
-1 & 0\\
-0 & 1
-\end{matrix}
-\right]
-\end{align}
-
-\begin{align}
-x(t) \circledast h(t) &= y(t) \\
-X(f) H(f) &= Y(f) 
-\end{align}
-
-\subsection{Derin öğrenme ile Hiperspektral}
-Derin öğrenme algoritmaları arasında en sık kullanılanı
-Evrişimsel Sinir Ağlarıdır (ESA). ESA mimarisi birçok
-katmandan oluşan bir mimariye sahip olup klasik Yapay
-Sinir Ağlarının (YSA) bir türüdür. Bu katmanlar ele alınan
-probleme göre sayıları değişebilen evrişim (konvolüsyon)
-katmanları, havuzlama (pooling) katmanları, doğrultulmuş
-doğrusal ünite (ReLU) ve tam bağlı (fully-connected)
-katmanlardır. Mevcut ESA mimarileri herhangi bir
-düzenleme yapılmadan doğrudan hiperspektral görüntü
-sınıflandırma problemine uygulandıklarında başarı oranı
-istenen düzeylerde olmamaktadır. Özellikle benzer renk ve
-dokusal içerik bulunan sınıflar için evrişimsel özelliklere ek
-olarak daha farklı özelliklerin de elde edilmesi
-gerekmektedir.
-\begin{figure}[!h]
+\begin{figure}[!ht]
   \centering
-  \begin{measuredfigure} % figure left side
-  \includegraphics[width=0.3\textwidth]{Figures/ktuLogo}
-  \caption{KTU Logo }
-  \label{fig:wordvslatex}
-  \end{measuredfigure}
+  \includegraphics[width=1\textwidth]{Figures/GenelBilgiler/electromanyetcSpectrum.png}
+  \caption{Uzaktan algılamada rastgele bölünmelerin kullanıldığını gösteren elektromanyetik spektrum. }
 \end{figure}
 
-\subsubsection{ESA Mimari özet}
- Ayrıca ESA mimarileri çok büyük ölçekte
-eğitim örneğine ihtiyaç duyarken, hiperspektral görüntü veri
-tabanlarının sınırlı sayıda örnek içermesi derin öğrenme
-mimarisinin eğitilmesinde yetersiz kalınmasına yol
-açmaktadır. Bu çalışmada bahsedilen zorlukların üstesinden
-gelebilecek bir mimariye sahip olmakla birlikte, özellik
-çıkarma ve öğrenme kapasitesi yüksek bir ESA mimarisi
-tasarlanmıştır. 
+Uzaktan algılamanın çalışma aşamasını anlatacaklar olursak ilk olarak bir çok bileşenlerini açıklamamız gerekir. Bunlar Enerji, Elektromanyetik Radyason, Uydu sensörleri olarak söyleyebiliriz.
+Enerji, hem içinden geçtiği atmosferle hem de algılanan Dünya yüzeyiyle etkileşime girer.Elektromanyetik radyasyon atmosferden geçerken dağılır, emilir ve kırılır. Uydu sensörleri için, ışık atmosferde uzun mesafeler kat etmelidir ve yansıyan ışık durumunda, atmosferde iki kez (Güneş'ten Dünya'nın yüzeyine ve Dünya'nın yüzeyinden sensöre) gitmelidir (Şekil 1.2).
+Işığın saçılması ve emilmesinden kaynaklanan bazı önemli atmosferik etkiler dalga boyuna bağlıdır ve belirli bir dalga boyunun ne kadar enerjisinin atmosferden geçip sensöre ulaşabileceğini belirler. Örneğin, daha kısa dalga boyları, atmosfer tarafından daha uzun dalga boylarından daha fazla dağılma eğilimindedir ve sonuç olarak pus ve bulutlardan daha fazla etkilenir \cite{READ2009335}.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=1\textwidth]{Figures/GenelBilgiler/remoteSensingSystem.png}
+  \caption{Tipik bir uzaktan algılama sisteminin enerji yolları ve bileşenleri. }
+\end{figure}
+
+
+Son birkaç on yılda, Hiperspektral Görüntüleme (HSI) önem kazanmış ve görsel veri analizinin birçok alanında merkezi bir rol oynamıştır. Görüntüleme ile birleştirilen spektroskopi kavramı ilk olarak 1970'lerin sonunda Uzaktan Algılama (RS) alanında \cite{goetz1985imaging} kullanılmaya başlandı. O zamandan beri HSI, çeşitli özel görevler için artan sayıda alanda uygulamalar bulmuştur ve günümüzde RS \cite{eismann2012hyperspectral} dışında, biyotıp \cite{lu2014medical}, gıda kalitesi \cite{sun2010hyperspectral}, tarla yetiştiriciliği \cite{kamilaris2018deep, lowe2017hyperspectral} ve kültürel miras \cite{fischer2006multispectral} ve diğerleri \cite{khan2018modern} dışında büyük ölçüde kullanılmaktadır.
+
+\section{Giriş 2}
+
+Hiperspektral görüntü küpleri, farklı elektromanyetik spektrumlardan (spektral bantlardan)
+alınan yüzlerce veya binlerce uzamsal görüntüden oluşur. Bu nedenle, araştırma yapanlara aynı
+anda hem uzamsal hem de spektral bilgi sunarlar. Hiperspektral görüntüler, sahnenin spektral özelliklerini gözlemlemeye yardımcı olan yüzlerce spektral bant (kızılötesi (IR) elektromanyetik spektrum bandında, 0,4-2,4 µm) içerir. "Hiper-" ön eki, çok sayıda (100'den fazla) dar spektral bant (10-20 nm genişliğinde) içermekten gelir. Bu spektral bantlardaki güneş enerjisi, dünya nesneleri tarafından yansıtılır ve yansıtma değeri, malzemeleri ayırt etmek için kullanılır. Hiperspektral görüntüler, Şekil 1.3'de gösterildiği gibi üç boyutlu veri küpleri (hiper küp) olarak gösterilebilir. Hiper küp, pikseller dahil uzamsal verileri içerir. Ve her pikselin spektral bilgisi vardır \cite{ma2010local}. Hiperspektral görüntülemede teknolojinin gelişmesiyle birçok ülke bu alana odaklanmıştır.
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=1\textwidth]{Figures/GenelBilgiler/hypersepctral-cube.png}
+  \caption{Hiperspektral görüntü kavramı. Görüntü ölçümleri birçok dar bitişik dalga boyu bandında yapılır ve her piksel için eksiksiz bir spektrum elde edilir. \cite{shippert2003introduction} }
+\end{figure}
+Örneğin, Almanya’nın Environmental Mapping and Analysis Programı (EnMAP), Dünya'nın
+çevresini küresel ölçekte izlemeyi ve nitelendirmeyi hedeflemektedir. Bu durum günden güne
+uzaktan algılama görüntülerindeki artışa paralel olarak hiperspektral veri ambarlarında artışa
+neden olmaktadır. Bunun sonucunda da, görüntülerdeki gizli bilgilerin açığa çıkarılabilmesine
+imkân tanınmaktadır. Ancak, bu bilgilerin nasıl kullanılacağı daha fazla araştırma gerektiren açık
+bir konudur.
+
+
+%% Hiperspektral ile ilgili görüntüler gelecek
+
+Özellikle, Evrişimli Sinir Ağları (Convolutional Neural Networks = CNN) \cite{lecun1999object} birçok bilgisayarlı
+görme problemi için güçlü bir araçtır. Diğer derin öğrenme algoritmalarından farklı olarak,
+CNN'ler, katlama – evrişim- (filtreleme) işleminin görüntünün belirli bir alıcı alanı (receptive
+field) üzerinde gerçekleştirildiği evrişim katmanlarını içerir. Derin Öğrenme mimarileri uzaktan
+algılamada birçok amaç için kullanılabilir: görüntü ön işleme, piksel tabanlı sınıflandırma, hedef
+tanıma, anlamsal özellik çıkarma ve sahne anlamlandırma.
+
+Derin Öğrenmenin uzaktan algılama verilerinde kullanımı bazı nedenlerden dolayı ekstra
+motivasyona sahiptir: 
+\begin{enumerate}
+    \item Uzaktan algılama verileri (özellikle çok bantlı ve hiperspektral
+görüntüler), çoklu spektral bantlar içerir. Bu, birkaç görüntüde bile veri miktarının çok büyük
+olduğu anlamına gelir. Bu yüzden daha fazla nörona ve daha derin sinir ağlarına ihtiyaç
+duymaktadır [4].
+    \item Uzaktan algılama görüntüleri, doğal sahne görüntülerinden daha karmaşıktır.
+Farklı renk, konum, boyut ve yönelime sahip çeşitli nesne türlerinden oluşabilir. Bu karmaşıklık,
+doğal (natural) görüntü tanıma için ortak bir yaklaşım olan transfer öğrenmenin başarılı bir
+şekilde uygulanmasına engel olur. Transfer öğrenmede, derin öğrenme modeli çok sayıda etiketli
+numuneye sahip olan bir veri seti ile (ImageNet gibi) ön eğitimden geçirilmiştir. Ardından, sınırlı
+eğitim numuneleriyle sadece modelin son 2 veya 3 tam bağlı katmanını yeniden eğitilerek
+(önceki katmanlar değil) model parametreleri (ağırlıklar) güncellenir. Ayrıca, görsel farklılıklara neden olan farklı sensörlerle görüntüler çekilebilir.
+    \item Her ne kadar derin öğrenme yöntemleri
+çok sayıda etiketlenmiş veri ile mükemmel bir performans sergilese de, uzaktan algılamada
+yalnızca sınırlı sayıda etiketli veri bulunmaktadır. Bu durum derin öğrenme yöntemlerinin
+performansını sınırlamaktadır
+\end{enumerate}
+
+Yukarıda belirtilen nedenlerden ötürü, hiperspektral uzaktan algılama için en uygun derin sinir
+ağı mimarisinin geliştirilmesi zorlayıcı ve popüler bir araştırma alanıdır.
+
+% Son zamanlarda, derin öğrenmenin doğal görüntü işleme alanındaki başarısını takiben, bu
+% yöntemler HSI (Hyper-spectral Imaging = Hiperspektral görüntüleme) sınıflamasına da
+% uygulanmış ve etkileyici sonuçlar elde edilmiştir [5] [6] [7]. Bu yaklaşımlar sırasıyla spektral
+% bilgiden, uzamsal bilgiden ve spektral-uzamsal bilgiden faydalananlar olarak üç ana kategoride
+% ele alınabilir.
+
+% Uzamsal çözünürlük ile karşılaştırıldığında, spektral çözünürlük nispeten daha yüksektir. Her bir
+% pikselden bir spektral vektör çıkarılabilir ve bu uzamsal piksele gömülü bilgi içeriğini
+% tanımlamak için kullanılır. Geleneksel HSI sınıflandırma yaklaşımları yalnızca spektral bilgileri
+% kullanır. Tipik sınıflandırıcılar arasında k-en yakın komşuluk [7], uzaklık ölçütü [8], lojistik
+% regresyon [9], ve en büyük olabilirlik kriteri [10] temelinde uygulanmış olanlar yer almaktadır.
+% Her pikseli doğrudan spektral vektör üzerinden sınıflandırmak çoğu zaman makul ve verimli
+% değildir. Literatürdeki geleneksel HSI sınıflandırma yaklaşımlarında, sınıflandırmayı
+% desteklemek için özellik çıkarma yöntemleri de uygulanmıştır.
+
+% \section{Derin Öğrenmede Temel Algoritmalar}
+% Son yıllarda, çeşitli Derin Öğrenme mimarileri (Deep Learning -DL) geliştirildi \cite{lecun2015deep} ve ses tanıma \cite{mohamed2011deep}, doğal dil işleme \cite{collobert2008unified} ve genellikle sahip oldukları birçok sınıflandırma görevi \cite{bengio2007greedy}, \cite{krizhevsky2012imagenet} gibi alanlarda uygulandı ve geleneksel yöntemlerden daha iyi performans gösterdi. İnsan beyninin mimari derinliğinden esinlenen DL araştırmacıları, sığ mimarilere alternatif olarak yeni derin mimariler geliştirdiler. Derin inanç ağları (Deep belief networks -DBN) \cite{hinton2006fast}, DL araştırmalarında büyük bir dönüm noktasıdır ve kısıtlı Boltzmann makineleri (Boltzmann machines -RBM) \cite{freund1994unsupervised} tarafından denetimsiz(unsupervised) bir şekilde her seferinde bir katmanı eğitir. Kısa bir süre sonra, her seviyede yerel olarak ara temsil seviyelerini eğiten bir dizi Oto-Kodlaycı (AutoEncoder -AE) tabanlı algoritma önerildi (AE ve Seyrek (Sparse) AE ve Gürültü Azaltma (Denoising) AE gibi varyantları \cite{rumelhart1985learning, vincent2008extracting}).
